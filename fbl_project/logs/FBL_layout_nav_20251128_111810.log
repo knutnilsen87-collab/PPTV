@@ -1,0 +1,7 @@
+2025-11-28T11:18:10.7741324+01:00	[INFO]	Starting layout nav update in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T11:18:10.8127327+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T11:18:11.4169498+01:00	[INFO]	Detected font export variable: inter
+2025-11-28T11:18:11.4544283+01:00	[INFO]	Backed up layout.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\layout.tsx.bak_20251128_111810
+2025-11-28T11:18:11.5566008+01:00	[INFO]	Wrote new src/app/layout.tsx that uses Navigation
+2025-11-28T11:18:11.5625972+01:00	[INFO]	Layout nav update completed
+2025-11-28T11:18:11.5694999+01:00	[INFO]	Log signed successfully

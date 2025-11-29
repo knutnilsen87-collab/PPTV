@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: propokertv-web
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: "file:./dev.db"
+      NEXTAUTH_URL: "http://localhost:3000"
+      # Sett NEXTAUTH_SECRET i et .env.prod som du mount-er om ønskelig
+    volumes:
+      - ./dev.db:/app/dev.db
+    restart: unless-stopped

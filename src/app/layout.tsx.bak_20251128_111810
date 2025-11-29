@@ -1,0 +1,21 @@
+import type { Metadata } from 'next'
+import './globals.css'
+import { inter, manrope } from './fonts'
+import TopNav from '@/components/TopNav'
+import SiteFooter from '@/components/SiteFooter'
+import { ToastProvider } from '@/components/ToastProvider'
+
+export const metadata: Metadata = { title: 'ProPokerTV', description: 'Elite poker video platform' }
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang='en' className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <body className='bg-poker-primary text-poker-text antialiased'>
+        <ToastProvider>
+          <TopNav/>
+          <main id='main' className='py-6'>{children}</main>
+          <SiteFooter/>
+        </ToastProvider>
+      </body>
+    </html>
+  )
+}

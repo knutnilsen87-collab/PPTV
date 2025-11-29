@@ -1,0 +1,4 @@
+2025-11-28T18:36:41.0269065+01:00	[INFO]	Starting pages/api NextAuth route setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T18:36:41.1624687+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\pages\api\auth
+2025-11-28T18:36:41.2393475+01:00	[INFO]	Wrote pages/api/auth/[...nextauth].ts
+2025-11-28T18:36:41.2469774+01:00	[INFO]	Pages API NextAuth route setup finished

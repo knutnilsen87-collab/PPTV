@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Neo-Luxe brand tokens ===== */
+:root{
+  --color-primary:#0B0E13; --color-secondary:#111C2D;
+  --color-accent-gold:#FFD166; --color-deep-gold:#CFAE58;
+  --color-emerald-green:#00ECC3; --color-royal-red:#F4355E;
+  --color-text-primary:#EDEDEF; --color-text-secondary:#A6A7AD;
+  --color-border:#2A2B31;
+}
+:root{ color-scheme: dark }
+html{ background:var(--color-primary); color:var(--color-text-primary) }
+
+/* Motion */
+:root{ --dur-1:120ms; --dur-2:200ms; --dur-3:320ms; --ease-luxe:cubic-bezier(.22,.61,.36,1) }
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
+
+/* Focus rings */
+:focus-visible{ outline:none }
+:focus-visible{ box-shadow:0 0 0 3px var(--color-emerald-green); border-radius:12px }
+
+/* Helpers */
+.card{ background:var(--color-secondary); border:1px solid var(--color-border); border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.35) }
+.border-brand{ border-color: var(--color-border) }
+.glass{ background: rgba(17,28,45,.95); backdrop-filter: blur(8px) }
+
+/* === ProPokerTV Global Palette Overrides === */
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, var(--pptv-obsidian-blue, #050816) 0, #020617 55%, #000000 100%);
+  color: #E5E7EB;
+}
+
+/* Primær CTA-knapp i Golden Riviera-look */
+.pptv-primary-cta {
+  background: radial-gradient(circle at 0% 0%, #FFF5D4 0, #F7C967 35%, var(--pptv-golden-riviera, #F4B544) 60%, #C27E22 100%);
+  color: #050816;
+  border-radius: 9999px;
+  padding: 0.65rem 1.7rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 0 18px rgba(244, 181, 68, 0.9),
+    0 0 4px rgba(0, 0, 0, 0.6) inset;
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+
+.pptv-primary-cta:hover {
+  filter: brightness(1.08);
+  box-shadow:
+    0 0 24px rgba(244, 181, 68, 1),
+    0 0 6px rgba(0, 0, 0, 0.8) inset;
+  transform: translateY(-1px);
+}
+
+.pptv-primary-cta:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow:
+    0 0 12px rgba(244, 181, 68, 0.8),
+    0 0 3px rgba(0, 0, 0, 0.9) inset;
+}
+
+
+/* === ProPokerTV Global Palette Overrides (FBL) === */
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, var(--pptv-obsidian-blue, #050816) 0, #020617 55%, #000000 100%);
+  color: #E5E7EB;
+}
+
+/* Primær CTA-knapp i Golden Riviera-look */
+.pptv-primary-cta {
+  background: radial-gradient(circle at 0% 0%, #FFF5D4 0, #F7C967 35%, var(--pptv-golden-riviera, #F4B544) 60%, #C27E22 100%);
+  color: #050816;
+  border-radius: 9999px;
+  padding: 0.65rem 1.7rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 0 18px rgba(244, 181, 68, 0.9),
+    0 0 4px rgba(0, 0, 0, 0.6) inset;
+  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+
+.pptv-primary-cta:hover {
+  filter: brightness(1.08);
+  box-shadow:
+    0 0 24px rgba(244, 181, 68, 1),
+    0 0 6px rgba(0, 0, 0, 0.8) inset;
+  transform: translateY(-1px);
+}
+
+.pptv-primary-cta:active {
+  transform: translateY(0px) scale(0.98);
+  box-shadow:
+    0 0 12px rgba(244, 181, 68, 0.8),
+    0 0 3px rgba(0, 0, 0, 0.9) inset;
+}
+

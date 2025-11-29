@@ -1,0 +1,12 @@
+2025-11-28T14:43:18.9736824+01:00	[INFO]	Starting Prisma schema reset in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:43:20.7270440+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T14:43:20.8702773+01:00	[INFO]	Backed up prisma directory to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\prisma_backup_20251128_144316
+2025-11-28T14:43:21.7885659+01:00	[INFO]	Wrote clean schema.prisma with User/Role/profile, NextAuth, Video, Vote
+2025-11-28T14:43:21.9386650+01:00	[INFO]	Backed up migrations to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\migrations_20251128_144316
+2025-11-28T14:43:21.9482721+01:00	[INFO]	Removed existing migrations directory
+2025-11-28T14:43:21.9819725+01:00	[INFO]	Running pnpm prisma migrate dev --name init_user_profile_role_schema
+2025-11-28T14:43:23.1968905+01:00	[ERROR]	prisma migrate dev failed with code 130
+2025-11-28T14:43:23.2082419+01:00	[INFO]	Running pnpm prisma generate
+2025-11-28T14:43:24.7222377+01:00	[INFO]	prisma generate completed successfully
+2025-11-28T14:43:24.7984540+01:00	[INFO]	Prisma schema reset finished
+2025-11-28T14:43:24.8399492+01:00	[INFO]	Log signed successfully

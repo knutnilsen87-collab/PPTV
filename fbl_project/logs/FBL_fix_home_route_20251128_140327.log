@@ -1,0 +1,6 @@
+2025-11-28T14:03:27.8090354+01:00	[INFO]	Starting home route fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:03:27.8661034+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T14:03:27.9502586+01:00	[INFO]	Backed up existing app/page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\page.tsx.bak_20251128_140327
+2025-11-28T14:03:27.9516616+01:00	[INFO]	Synced home page from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\page.tsx
+2025-11-28T14:03:27.9772333+01:00	[INFO]	Home route fix completed
+2025-11-28T14:03:27.9847512+01:00	[INFO]	Log signed successfully

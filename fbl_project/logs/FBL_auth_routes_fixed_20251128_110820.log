@@ -1,0 +1,11 @@
+2025-11-28T11:08:21.2123895+01:00	[INFO]	Starting FIXED auth route sync in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T11:08:21.5002305+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T11:08:21.9983615+01:00	[WARN]	Missing source for API auth/[...nextauth] at G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\api\auth\[...nextauth]\route.ts
+2025-11-28T11:08:22.2217497+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\login for Login page
+2025-11-28T11:08:22.2350719+01:00	[INFO]	Synced Login page from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\login\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\login\page.tsx
+2025-11-28T11:08:22.2537207+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\register for Register page
+2025-11-28T11:08:22.2663400+01:00	[INFO]	Synced Register page from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\register\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\register\page.tsx
+2025-11-28T11:08:22.2965707+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\profile for Profile page
+2025-11-28T11:08:22.2987791+01:00	[INFO]	Synced Profile page from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\profile\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\profile\page.tsx
+2025-11-28T11:08:22.3159519+01:00	[INFO]	FIXED auth route sync completed
+2025-11-28T11:08:22.3235871+01:00	[INFO]	Log signed successfully

@@ -1,0 +1,6 @@
+2025-11-28T14:08:47.6823746+01:00	[INFO]	Starting Norwegian nav label update in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:08:48.2041640+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T14:08:48.9342607+01:00	[INFO]	Backed up Navigation.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\Navigation.tsx.bak_labels_20251128_140846
+2025-11-28T14:08:49.1424769+01:00	[INFO]	Wrote new Navigation.tsx with Norwegian labels
+2025-11-28T14:08:49.1493674+01:00	[INFO]	Norwegian nav label update completed
+2025-11-28T14:08:49.1561062+01:00	[INFO]	Log signed successfully

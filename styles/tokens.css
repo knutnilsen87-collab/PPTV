@@ -1,0 +1,66 @@
+:root{
+  --bg-primary:#111C2D;--bg-secondary:#0E1624;--surface-card:#0F1A2A;
+  --text-primary:#F4EBD0;--text-secondary:rgba(244,235,208,.72);
+  --gold-500:#D8A928;--gold-600:#C7981F;--gold-700:#A77F16;--poker-red-500:#C92007;
+  --radius-button:12px;--radius-card:16px;--shadow-e1:0 6px 20px rgba(0,0,0,.35)
+}
+html{color-scheme:dark}
+body{background:radial-gradient(1200px 800px at 50% 0%, #14223A 0%, #0E1624 55%, #0B1321 100%)}
+/* === ProPokerTV Brand Palette (Golden Riviera) === */
+/* Juster hex-verdier hvis du vil matche designet 100% */
+
+:root {
+  --pptv-obsidian-blue:   #050816;  /* mørk blå bakgrunn */
+  --pptv-sapphire-smoke:  #071022;  /* litt lysere blå */
+  --pptv-poker-red:       #B3151F;  /* Poker Red */
+  --pptv-golden-riviera:  #F4B544;  /* Golden Riviera / gull */
+
+  /* Short aliases */
+  --pptv-bg:              var(--pptv-obsidian-blue);
+  --pptv-surface:         #0B1020;
+  --pptv-gold:            var(--pptv-golden-riviera);
+}
+
+/* Helper-klasser – kan brukes sammen med Tailwind */
+
+.pptv-bg-obsidian {
+  background-color: var(--pptv-obsidian-blue);
+}
+
+.pptv-bg-sapphire {
+  background-color: var(--pptv-sapphire-smoke);
+}
+
+.pptv-bg-poker-red {
+  background-color: var(--pptv-poker-red);
+}
+
+.pptv-text-gold {
+  color: var(--pptv-golden-riviera);
+}
+
+.pptv-button-gold {
+  background: radial-gradient(circle at 0% 0%, #FFF5D4 0, #F7C967 35%, #F4B544 60%, #C27E22 100%);
+  color: #050816;
+  border-radius: 9999px;
+  padding: 0.65rem 1.6rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 18px rgba(244, 181, 68, 0.9),
+    0 0 4px rgba(0, 0, 0, 0.6) inset;
+}
+
+.pptv-button-gold:hover {
+  filter: brightness(1.05);
+  box-shadow:
+    0 0 24px rgba(244, 181, 68, 1),
+    0 0 4px rgba(0, 0, 0, 0.7) inset;
+}
+
+.pptv-card {
+  background: radial-gradient(circle at top, #111827 0, #020617 60%, #000000 100%);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+

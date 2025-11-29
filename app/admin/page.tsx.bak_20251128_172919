@@ -1,0 +1,36 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
+
+export default async function AdminPage() {
+  const session = await getServerSession(authOptions);
+  const role = (session?.user as any)?.role ?? "USER";
+
+  if (!session?.user || (role !== "ADMIN" && role !== "SUPERADMIN")) {
+    redirect("/");
+  }
+
+  return (
+    <main className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-8">
+      <section>
+        <h1 className="text-2xl font-semibold">Admin control room</h1>
+        <p className="text-sm text-slate-300">
+          Internal tools for managing users, content and Play of the Week.
+        </p>
+      </section>
+
+      <section className="grid gap-4 rounded-2xl border border-red-500/30 bg-slate-900/60 p-4">
+        <p className="text-sm text-slate-200">
+          This is the starting point for the full admin dashboard. From here we
+          will add panels for:
+        </p>
+        <ul className="list-disc space-y-1 pl-5 text-sm text-slate-200">
+          <li>User management (roles, bans, creators).</li>
+          <li>Video &amp; clips moderation and featuring.</li>
+          <li>Play of the Week candidates, votes and winners.</li>
+          <li>Basic site analytics and feature toggles.</li>
+        </ul>
+      </section>
+    </main>
+  );
+}

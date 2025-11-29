@@ -1,0 +1,19 @@
+2025-11-28T16:38:34.3773414+01:00	[INFO]	Starting NextAuth + user/admin skeleton setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T16:38:37.3454813+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T16:38:41.9451236+01:00	[INFO]	Running pnpm add bcryptjs
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Packages: +1
++
+Progress: resolved 509, reused 459, downloaded 1, added 1, done
+
+dependencies:
++ bcryptjs 3.0.3
+
+Done in 1.2s using pnpm v10.19.0
+2025-11-28T16:38:43.3961070+01:00	[INFO]	bcryptjs installed successfully
+2025-11-28T16:38:43.4504204+01:00	[INFO]	Wrote src/lib/db.ts
+2025-11-28T16:38:43.4737355+01:00	[INFO]	Backed up existing auth.ts to G:\PPTVGITHBNUB\ProPokerTV_merged\src\lib\auth.ts.bak_20251128_163832
+2025-11-28T16:38:43.6838980+01:00	[INFO]	Wrote src/lib/auth.ts with PrismaAdapter + Credentials + role/profile in session
+2025-11-28T16:38:43.7294940+01:00	[INFO]	Created src/app/api/auth/[...nextauth] directory
+2025-11-28T16:38:43.7865504+01:00	[INFO]	Wrote src/app/api/auth/[...nextauth]/route.ts
+2025-11-28T16:38:43.8409199+01:00	[INFO]	Created app/account directory

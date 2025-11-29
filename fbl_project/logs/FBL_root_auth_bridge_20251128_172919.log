@@ -1,0 +1,12 @@
+2025-11-28T17:29:20.6033717+01:00	[INFO]	Starting root auth bridge in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T17:29:20.8434956+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T17:29:21.5302576+01:00	[INFO]	Created root lib directory at G:\PPTVGITHBNUB\ProPokerTV_merged\lib
+2025-11-28T17:29:21.5335532+01:00	[INFO]	Wrote root bridge lib/auth.ts -> ../src/lib/auth
+2025-11-28T17:29:21.5816696+01:00	[INFO]	Created G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\auth\[...nextauth]
+2025-11-28T17:29:21.6336075+01:00	[INFO]	Wrote app/api/auth/[...nextauth]/route.ts using @/lib/auth
+2025-11-28T17:29:21.6952738+01:00	[INFO]	Backed up G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_20251128_172919
+2025-11-28T17:29:21.6971368+01:00	[INFO]	Ensured auth import uses @/lib/auth in G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx
+2025-11-28T17:29:21.7040064+01:00	[INFO]	Backed up G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx.bak_20251128_172919
+2025-11-28T17:29:21.7048152+01:00	[INFO]	Ensured auth import uses @/lib/auth in G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx
+2025-11-28T17:29:21.7180491+01:00	[INFO]	Root auth bridge + NextAuth route fix completed
+2025-11-28T17:29:21.7262302+01:00	[INFO]	Log signed successfully

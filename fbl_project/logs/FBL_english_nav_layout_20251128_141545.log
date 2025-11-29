@@ -1,0 +1,8 @@
+2025-11-28T14:15:46.3527172+01:00	[INFO]	Starting English nav + layout update in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:15:46.4379086+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T14:15:46.8003053+01:00	[INFO]	Backed up Navigation.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\Navigation.tsx.bak_en_20251128_141545
+2025-11-28T14:15:46.8013561+01:00	[INFO]	Wrote new English Navigation.tsx
+2025-11-28T14:15:46.8919036+01:00	[INFO]	Backed up app/layout.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\layout.tsx.bak_en_20251128_141545
+2025-11-28T14:15:46.8927396+01:00	[INFO]	Wrote new English app/layout.tsx
+2025-11-28T14:15:46.9003788+01:00	[INFO]	English nav + layout update completed
+2025-11-28T14:15:46.9075461+01:00	[INFO]	Log signed successfully

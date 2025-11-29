@@ -1,0 +1,14 @@
+2025-11-27T22:57:24.6162263+01:00	[INFO]	Starting route check in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T22:57:24.6498166+01:00	[INFO]	Using existing RSA keypair
+2025-11-27T22:57:24.7080793+01:00	[INFO]	app/play-of-the-week/page.tsx exists at G:\PPTVGITHBNUB\ProPokerTV_merged\app\play-of-the-week\page.tsx
+2025-11-27T22:57:24.7142319+01:00	[WARN]	app/video/[id]/page.tsx missing at G:\PPTVGITHBNUB\ProPokerTV_merged\app\video\[id]\page.tsx
+2025-11-27T22:57:24.7189229+01:00	[INFO]	app/api/videos/route.ts exists at G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\videos\route.ts
+2025-11-27T22:57:24.7234226+01:00	[INFO]	app/api/votes/route.ts exists at G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\votes\route.ts
+2025-11-27T22:57:24.7282384+01:00	[INFO]	app/clips/page.tsx exists at G:\PPTVGITHBNUB\ProPokerTV_merged\app\clips\page.tsx
+2025-11-27T22:57:24.7376588+01:00	[INFO]	src/app/play-of-the-week/page.tsx exists at G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\play-of-the-week\page.tsx
+2025-11-27T22:57:24.7435565+01:00	[WARN]	src/app/video/[id]/page.tsx missing at G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]\page.tsx
+2025-11-27T22:57:24.7487135+01:00	[INFO]	src/app/api/videos/route.ts exists at G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\api\videos\route.ts
+2025-11-27T22:57:24.7534097+01:00	[INFO]	src/app/api/votes/route.ts exists at G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\api\votes\route.ts
+2025-11-27T22:57:24.7577443+01:00	[INFO]	src/app/clips/page.tsx exists at G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\clips\page.tsx
+2025-11-27T22:57:24.7620031+01:00	[INFO]	Route check completed
+2025-11-27T22:57:24.7678976+01:00	[INFO]	Log signed successfully

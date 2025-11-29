@@ -1,0 +1,37 @@
+{
+  "defaults": {
+    "timeout": 30000,
+    "wait": 2000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    },
+    "standard": "WCAG2AA",
+    "ignore": [
+      "color-contrast"
+    ],
+    "includeNotices": false,
+    "includeWarnings": false
+  },
+  "urls": [
+    {
+      "url": "file:///D:/projects/_current_projects/ProPokerTV/src/pages/index.html",
+      "screenCapture": "screenshots/index.png"
+    },
+    {
+      "url": "file:///D:/projects/_current_projects/ProPokerTV/src/pages/community.html",
+      "screenCapture": "screenshots/community.png"
+    },
+    {
+      "url": "file:///D:/projects/_current_projects/ProPokerTV/src/pages/academy.html",
+      "screenCapture": "screenshots/academy.png"
+    },
+    {
+      "url": "file:///D:/projects/_current_projects/ProPokerTV/src/pages/live.html",
+      "screenCapture": "screenshots/live.png"
+    },
+    {
+      "url": "file:///D:/projects/_current_projects/ProPokerTV/src/pages/profile.html",
+      "screenCapture": "screenshots/profile.png"
+    }
+  ]
+}

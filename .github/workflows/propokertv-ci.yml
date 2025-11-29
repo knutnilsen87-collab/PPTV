@@ -1,0 +1,47 @@
+name: ProPokerTV CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Enable corepack / pnpm
+        run: |
+          corepack enable
+          pnpm --version
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prisma generate
+        run: pnpm prisma generate
+
+      - name: Lint
+        run: |
+          if pnpm run | grep -q "lint"; then
+            pnpm lint
+          else
+            echo "No lint script defined; skipping."
+          fi
+
+      - name: Build
+        run: pnpm build
+
+      # (Valgfritt) Bygg Docker-image – legg til registry/push senere
+      - name: Build Docker image
+        run: docker build -t propokertv:ci .

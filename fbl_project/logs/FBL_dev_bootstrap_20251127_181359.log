@@ -1,0 +1,10 @@
+2025-11-27T18:13:59.4430279+01:00	[INFO]	Starting FBL dev bootstrap in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T18:13:59.5130920+01:00	[INFO]	Generating RSA keypair
+2025-11-27T18:13:59.6119679+01:00	[INFO]	Creating rollback backup zip
+2025-11-27T18:13:59.6563816+01:00	[ERROR]	Backup failed: Exception calling "CreateFromDirectory" with "2" argument(s): "The process cannot access the file 'G:\PPTVGITHBNUB\ProPokerTV_merged\.next\trace' because it is being used by another process."
+2025-11-27T18:13:59.7838890+01:00	[INFO]	Using pnpm as package manager
+2025-11-27T18:13:59.8466572+01:00	[INFO]	node_modules already present; skipping install
+2025-11-27T18:13:59.8959759+01:00	[INFO]	Running command: pnpm 
+2025-11-27T18:14:00.0066882+01:00	[INFO]	Running command: pnpm 
+2025-11-27T18:14:00.0343329+01:00	[INFO]	FBL dev bootstrap completed
+2025-11-27T18:14:00.0621697+01:00	[INFO]	Log integrity stored; hash=JHlIw/DhmTaGaqIkER8SDpENeNdnPxrmyEIFRp/im9c=

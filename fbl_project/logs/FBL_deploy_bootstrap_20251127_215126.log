@@ -1,0 +1,9 @@
+2025-11-27T21:51:26.9614773+01:00	[INFO]	Starting deploy-bootstrap in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T21:51:27.0005742+01:00	[INFO]	Using existing RSA keypair
+2025-11-27T21:51:27.1319237+01:00	[INFO]	Wrote Dockerfile
+2025-11-27T21:51:27.1754564+01:00	[INFO]	Wrote .dockerignore
+2025-11-27T21:51:27.2253524+01:00	[INFO]	Wrote docker-compose.yml
+2025-11-27T21:51:27.2497523+01:00	[INFO]	Created .github/workflows directory
+2025-11-27T21:51:27.3120573+01:00	[INFO]	Wrote GitHub Actions workflow
+2025-11-27T21:51:27.3210059+01:00	[INFO]	Deploy-bootstrap completed
+2025-11-27T21:51:27.3274738+01:00	[INFO]	Log signed successfully

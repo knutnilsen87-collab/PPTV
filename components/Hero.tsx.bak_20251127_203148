@@ -1,0 +1,15 @@
+"use client";
+export default function Hero(){
+  return (
+    <section className="mx-auto max-w-5xl pt-20 pb-14 text-center">
+      <h1 className="text-5xl md:text-6xl tracking-tight">Claim your seat at the table</h1>
+      <p className="mt-4 text-lg text-textc-secondary max-w-2xl mx-auto">
+        Underholdning, profesjonalitet og lidenskap for poker — i ett univers.
+      </p>
+      <div className="mt-8 inline-flex gap-4">
+        <a href="/feed" className="rounded-btn bg-gold-500 hover:bg-gold-600 text-bg-primary px-8 py-3 font-semibold shadow-e1">Watch Highlights</a>
+        <a href="/leaderboard" className="rounded-btn border border-gold-600 text-textc-primary px-8 py-3 hover:bg-[rgba(216,169,40,0.12)]">Leaderboard</a>
+      </div>
+    </section>
+  )
+}

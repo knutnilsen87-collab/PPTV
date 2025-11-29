@@ -1,0 +1,46 @@
+2025-11-28T14:52:48.9630192+01:00	[INFO]	Starting Prisma reset + migrate clean in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:52:49.0423525+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T14:52:49.1250782+01:00	[INFO]	Running pnpm prisma migrate reset --force --skip-generate
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "dev.db" at "file:./dev.db"
+
+Database reset successful
+
+
+2025-11-28T14:52:50.3946146+01:00	[INFO]	prisma migrate reset completed successfully
+2025-11-28T14:52:50.4146089+01:00	[INFO]	Running pnpm prisma migrate dev --name init_user_profile_role_schema
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "dev.db" at "file:./dev.db"
+
+Applying migration `20251128135251_init_user_profile_role_schema`
+
+The following migration(s) have been created and applied from new schema changes:
+
+prisma\migrations/
+  ÔööÔöÇ 20251128135251_init_user_profile_role_schema/
+    ÔööÔöÇ migration.sql
+
+Your database is now in sync with your schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GÔ£ö Generated Prisma Client (v6.19.0) to .\node_modules\.pnpm\@prisma+client@6.19
+.0_prism_0ade0c2032e7f19289902b884120cfab\node_modules\@prisma\client in 48ms
+
+
+2025-11-28T14:52:51.7710845+01:00	[INFO]	prisma migrate dev completed successfully
+2025-11-28T14:52:51.9088921+01:00	[INFO]	Running pnpm prisma generate
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+
+Ô£ö Generated Prisma Client (v6.19.0) to .\node_modules\.pnpm\@prisma+client@6.19.0_prism_0ade0c2032e7f19289902b884120cfab\node_modules\@prisma\client in 46ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+2025-11-28T14:52:53.1163104+01:00	[INFO]	prisma generate completed successfully
+2025-11-28T14:52:53.1303126+01:00	[INFO]	Prisma reset + migrate clean finished
+2025-11-28T14:52:53.1413220+01:00	[INFO]	Log signed successfully

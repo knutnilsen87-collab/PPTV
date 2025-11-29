@@ -1,0 +1,12 @@
+2025-11-28T14:32:29.5151692+01:00	[INFO]	Starting User roles + profile update in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:32:29.8827046+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T14:32:30.1972170+01:00	[INFO]	Backed up schema.prisma to G:\PPTVGITHBNUB\ProPokerTV_merged\prisma\schema.prisma.bak_20251128_143228
+2025-11-28T14:32:30.2529238+01:00	[INFO]	Role enum not found, appending to schema
+2025-11-28T14:32:30.6994472+01:00	[INFO]	Injecting 6 new fields into User model
+2025-11-28T14:32:30.7213015+01:00	[INFO]	schema.prisma updated on disk
+2025-11-28T14:32:30.7386878+01:00	[INFO]	Running pnpm prisma migrate dev --name add_user_profile_role
+2025-11-28T14:32:32.1123845+01:00	[ERROR]	prisma migrate dev failed with code 1
+2025-11-28T14:32:32.1254132+01:00	[INFO]	Running pnpm prisma generate
+2025-11-28T14:32:33.2891224+01:00	[ERROR]	prisma generate failed with code 1
+2025-11-28T14:32:33.2956134+01:00	[INFO]	User roles + profile update finished
+2025-11-28T14:32:33.3294727+01:00	[INFO]	Log signed successfully

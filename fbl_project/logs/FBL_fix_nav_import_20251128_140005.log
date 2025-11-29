@@ -1,0 +1,6 @@
+2025-11-28T14:00:05.5337169+01:00	[INFO]	Starting Navigation import fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:00:06.1856077+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T14:00:07.4984778+01:00	[INFO]	Backed up app/layout.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\layout.tsx.bak_nav_20251128_140005
+2025-11-28T14:00:07.6216201+01:00	[INFO]	Wrote new app/layout.tsx with relative Navigation import
+2025-11-28T14:00:07.6292691+01:00	[INFO]	Navigation import fix completed
+2025-11-28T14:00:07.6365370+01:00	[INFO]	Log signed successfully

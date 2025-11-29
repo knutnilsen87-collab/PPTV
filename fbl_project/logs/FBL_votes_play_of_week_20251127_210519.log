@@ -1,0 +1,7 @@
+2025-11-27T21:05:19.3638087+01:00	[INFO]	Starting votes + POW setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T21:05:19.3978260+01:00	[INFO]	Using existing RSA keypair
+2025-11-27T21:05:19.5035668+01:00	[INFO]	Wrote G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\api\votes\route.ts
+2025-11-27T21:05:19.5206585+01:00	[INFO]	Backed up existing POW page to G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\play-of-the-week\page.tsx.bak_20251127_210519
+2025-11-27T21:05:19.7078351+01:00	[INFO]	Wrote G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\play-of-the-week\page.tsx
+2025-11-27T21:05:19.7171767+01:00	[INFO]	Votes + POW setup completed
+2025-11-27T21:05:19.7332576+01:00	[INFO]	Log signed successfully

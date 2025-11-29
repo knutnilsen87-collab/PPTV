@@ -1,0 +1,147 @@
+"use client";
+
+import { useState } from "react";
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+type UploadFormProps = {
+  onCreated?: () => void;
+};
+
+export function UploadForm({ onCreated }: UploadFormProps) {
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("submitting");
+    setError(null);
+
+    try {
+      const res = await fetch("/api/videos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          url,
+          thumbnail: thumbnail || null,
+          description: description || null,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Noe gikk galt under opplasting.");
+      }
+
+      setStatus("success");
+      setTitle("");
+      setUrl("");
+      setThumbnail("");
+      setDescription("");
+
+      if (onCreated) {
+        onCreated();
+      }
+    } catch (err: any) {
+      console.error("Upload error", err);
+      setStatus("error");
+      setError(err.message ?? "Ukjent feil");
+    } finally {
+      setTimeout(() => setStatus("idle"), 2500);
+    }
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-4 rounded-2xl border border-white/10 bg-black/30 p-4 backdrop-blur"
+    >
+      <h2 className="text-lg font-semibold text-white">
+        Last opp nytt klipp
+      </h2>
+
+      <div className="space-y-1">
+        <label className="block text-sm text-white/70" htmlFor="title">
+          Tittel
+        </label>
+        <input
+          id="title"
+          className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-amber-400"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+          placeholder="WSOP Main Event – Hero Call"
+        />
+      </div>
+
+      <div className="space-y-1">
+        <label className="block text-sm text-white/70" htmlFor="url">
+          Videolenke (HLS / YouTube / Twitch)
+        </label>
+        <input
+          id="url"
+          className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-amber-400"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          required
+          placeholder="https://..."
+        />
+      </div>
+
+      <div className="space-y-1">
+        <label className="block text-sm text-white/70" htmlFor="thumbnail">
+          Thumbnail-URL (valgfritt)
+        </label>
+        <input
+          id="thumbnail"
+          className="w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-amber-400"
+          value={thumbnail}
+          onChange={(e) => setThumbnail(e.target.value)}
+          placeholder="https://..."
+        />
+      </div>
+
+      <div className="space-y-1">
+        <label className="block text-sm text-white/70" htmlFor="description">
+          Beskrivelse (valgfritt)
+        </label>
+        <textarea
+          id="description"
+          className="min-h-[80px] w-full rounded-lg border border-white/10 bg-black/40 px-3 py-2 text-sm text-white outline-none focus:border-amber-400"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Kort beskrivelse av hånden / spotten."
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="inline-flex items-center justify-center rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-black hover:bg-amber-400 disabled:cursor-wait disabled:opacity-60"
+      >
+        {status === "submitting" ? "Laster opp..." : "Last opp klipp"}
+      </button>
+
+      {status === "success" && (
+        <p className="text-sm text-emerald-400">
+          ✅ Klippet ble opprettet! Listen oppdateres automatisk.
+        </p>
+      )}
+
+      {status === "error" && (
+        <p className="text-sm text-red-400">
+          ❌ {error ?? "Noe gikk galt under opplasting."}
+        </p>
+      )}
+    </form>
+  );
+}
+
+export default UploadForm;

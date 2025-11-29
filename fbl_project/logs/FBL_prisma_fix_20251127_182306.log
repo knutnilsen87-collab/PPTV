@@ -1,0 +1,10 @@
+2025-11-27T18:23:06.0296564+01:00	[INFO]	Starting Prisma fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T18:23:06.0663517+01:00	[INFO]	Using existing RSA keypair
+2025-11-27T18:23:06.1485653+01:00	[INFO]	Backed up schema.prisma to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\schema.prisma.bak_20251127_182306
+2025-11-27T18:23:06.1935196+01:00	[INFO]	Patching schema.prisma with User model
+2025-11-27T18:23:06.1978245+01:00	[INFO]	User model inserted into schema.prisma
+2025-11-27T18:23:06.2428033+01:00	[INFO]	Running: pnpm 
+2025-11-27T18:23:06.2661074+01:00	[INFO]	Running: pnpm 
+2025-11-27T18:23:06.2832483+01:00	[INFO]	Running: pnpm 
+2025-11-27T18:23:06.2987216+01:00	[INFO]	Prisma fix script completed
+2025-11-27T18:23:06.3164714+01:00	[INFO]	Log signed; hash=WE5sP7k3sGEEP7WUKL8rV7bwmMdncMQbe1OG21UWvL0=

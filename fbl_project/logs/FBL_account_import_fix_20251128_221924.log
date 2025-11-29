@@ -1,0 +1,5 @@
+2025-11-28T22:19:26.7296410+01:00	[INFO]	Starting account import fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T22:19:28.1363932+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T22:19:29.2507623+01:00	[INFO]	Backed up account page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_importfix_20251128_221924
+2025-11-28T22:19:29.7253096+01:00	[INFO]	Rewrote /account page with ../../lib/auth and ../../lib/db imports
+2025-11-28T22:19:29.7456906+01:00	[INFO]	Log signed successfully

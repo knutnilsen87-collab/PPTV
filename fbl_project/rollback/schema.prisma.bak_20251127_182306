@@ -1,0 +1,89 @@
+// prisma/schema.prisma
+// Run: npx prisma generate && npx prisma migrate dev --name init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// ...existing code...
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Category {
+  id     String  @id @default(cuid())
+  name   String  @unique
+  videos Video[]
+}
+
+model Video {
+  id          String             @id @default(cuid())
+  title       String
+  durationSec Int
+  thumbnail   String
+  vendor      String // mux|cloudflare
+  playbackId  String // mux playback id or cloudflare uid
+  categoryId  String?
+  category    Category?          @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime           @default(now())
+  progress    PlaybackProgress[]
+  likes       Like[]
+}
+
+model PlaybackProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  videoId   String
+  position  Int      @default(0) // seconds
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  video     Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, videoId])
+}
+
+model Like {
+  id      String @id @default(cuid())
+  userId  String
+  videoId String
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  video   Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, videoId])
+}

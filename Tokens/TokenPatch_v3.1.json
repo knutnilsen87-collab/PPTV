@@ -1,0 +1,267 @@
+{
+  "version": "3.1.0",
+  "name": "Monaco Broadcast v3.1",
+  "description": "Design tokens for ProPokerTV Monaco Broadcast system",
+  "tokens": {
+    "color": {
+      "royal-midnight": {
+        "value": "#0A0F1A",
+        "description": "Base color for body and app chrome",
+        "type": "color",
+        "category": "background"
+      },
+      "obsidian": {
+        "value": "#0E1624",
+        "description": "Cards and modal backgrounds",
+        "type": "color",
+        "category": "background"
+      },
+      "sapphire-smoke": {
+        "value": "#111C2D",
+        "description": "Overlays and gradient backgrounds",
+        "type": "color",
+        "category": "background"
+      },
+      "gold": {
+        "value": "#D4AF37",
+        "description": "Primary accent color for CTAs and icons",
+        "type": "color",
+        "category": "accent"
+      },
+      "bronze": {
+        "value": "#B8860B",
+        "description": "Secondary metallic accent",
+        "type": "color",
+        "category": "accent"
+      },
+      "poker-red": {
+        "value": "#C92027",
+        "description": "Live states and alerts",
+        "type": "color",
+        "category": "accent"
+      },
+      "off-white": {
+        "value": "#F5F5F5",
+        "description": "Primary text color",
+        "type": "color",
+        "category": "text"
+      },
+      "midnight-shadow": {
+        "value": "#070A12",
+        "description": "Screen depth and shadows",
+        "type": "color",
+        "category": "shadow"
+      }
+    },
+    "gradient": {
+      "bg-hero": {
+        "value": "linear-gradient(160deg, #0B0F1A, #111C2D)",
+        "description": "Main hero background gradient",
+        "type": "gradient",
+        "category": "background"
+      },
+      "gold-shine": {
+        "value": "linear-gradient(110deg, #D4AF37 0%, #B8860B 50%, #FFD700 100%)",
+        "description": "Gold shine effect for buttons and accents",
+        "type": "gradient",
+        "category": "accent"
+      }
+    },
+    "shadow": {
+      "ambient-blue": {
+        "value": "0 0 25px rgba(10, 15, 26, 0.8)",
+        "description": "Ambient blue shadow for depth",
+        "type": "shadow",
+        "category": "elevation"
+      },
+      "goldGlow": {
+        "value": "0 0 18px rgba(212, 175, 55, 0.45)",
+        "description": "Gold glow effect for interactive elements",
+        "type": "shadow",
+        "category": "elevation"
+      },
+      "card": {
+        "value": "0 6px 20px rgba(212, 175, 55, 0.25)",
+        "description": "Card elevation shadow",
+        "type": "shadow",
+        "category": "elevation"
+      },
+      "modal": {
+        "value": "0 20px 60px rgba(7, 10, 18, 0.8)",
+        "description": "Modal overlay shadow",
+        "type": "shadow",
+        "category": "elevation"
+      }
+    },
+    "radius": {
+      "sm": {
+        "value": "8px",
+        "description": "Small border radius",
+        "type": "radius",
+        "category": "border"
+      },
+      "md": {
+        "value": "10px",
+        "description": "Medium border radius",
+        "type": "radius",
+        "category": "border"
+      },
+      "lg": {
+        "value": "12px",
+        "description": "Large border radius",
+        "type": "radius",
+        "category": "border"
+      },
+      "xl": {
+        "value": "16px",
+        "description": "Extra large border radius",
+        "type": "radius",
+        "category": "border"
+      }
+    },
+    "motion": {
+      "ease-gravity": {
+        "value": "cubic-bezier(0.25, 1, 0.5, 1)",
+        "description": "Gravity-based easing function",
+        "type": "easing",
+        "category": "animation"
+      },
+      "hover": {
+        "value": "350ms cubic-bezier(0.25, 1, 0.5, 1)",
+        "description": "Hover transition duration and easing",
+        "type": "duration",
+        "category": "animation"
+      },
+      "fade": {
+        "value": "300ms ease-out",
+        "description": "Fade transition duration and easing",
+        "type": "duration",
+        "category": "animation"
+      },
+      "slow": {
+        "value": "800ms cubic-bezier(0.25, 1, 0.5, 1)",
+        "description": "Slow transition duration and easing",
+        "type": "duration",
+        "category": "animation"
+      },
+      "shine": {
+        "value": "4s linear infinite",
+        "description": "Shine animation duration and timing",
+        "type": "duration",
+        "category": "animation"
+      }
+    },
+    "typography": {
+      "font-cinzel": {
+        "value": "'Cinzel Decorative', serif",
+        "description": "Authority headings (H1-H2)",
+        "type": "font-family",
+        "category": "typography"
+      },
+      "font-playfair": {
+        "value": "'Playfair Display', serif",
+        "description": "Editorial headings (H3-H5)",
+        "type": "font-family",
+        "category": "typography"
+      },
+      "font-inter": {
+        "value": "'Inter', sans-serif",
+        "description": "Body text and UI elements",
+        "type": "font-family",
+        "category": "typography"
+      },
+      "font-mono": {
+        "value": "'Roboto Mono', monospace",
+        "description": "Numeric data and code",
+        "type": "font-family",
+        "category": "typography"
+      }
+    },
+    "spacing": {
+      "container": {
+        "value": "1440px",
+        "description": "Maximum container width",
+        "type": "size",
+        "category": "layout"
+      },
+      "xs": {
+        "value": "4px",
+        "description": "Extra small spacing",
+        "type": "size",
+        "category": "spacing"
+      },
+      "sm": {
+        "value": "8px",
+        "description": "Small spacing",
+        "type": "size",
+        "category": "spacing"
+      },
+      "md": {
+        "value": "16px",
+        "description": "Medium spacing",
+        "type": "size",
+        "category": "spacing"
+      },
+      "lg": {
+        "value": "24px",
+        "description": "Large spacing",
+        "type": "size",
+        "category": "spacing"
+      },
+      "xl": {
+        "value": "32px",
+        "description": "Extra large spacing",
+        "type": "size",
+        "category": "spacing"
+      },
+      "xxl": {
+        "value": "48px",
+        "description": "Double extra large spacing",
+        "type": "size",
+        "category": "spacing"
+      }
+    },
+    "breakpoint": {
+      "mobile": {
+        "value": "480px",
+        "description": "Mobile breakpoint",
+        "type": "size",
+        "category": "responsive"
+      },
+      "tablet": {
+        "value": "768px",
+        "description": "Tablet breakpoint",
+        "type": "size",
+        "category": "responsive"
+      },
+      "desktop": {
+        "value": "1024px",
+        "description": "Desktop breakpoint",
+        "type": "size",
+        "category": "responsive"
+      },
+      "wide": {
+        "value": "1440px",
+        "description": "Wide desktop breakpoint",
+        "type": "size",
+        "category": "responsive"
+      }
+    }
+  },
+  "metadata": {
+    "created": "2024-01-27",
+    "version": "3.1.0",
+    "author": "ProPokerTV Design Team",
+    "license": "ProPokerTV Monaco Broadcast v3.1",
+    "compatibility": {
+      "browsers": ["Chrome 90+", "Firefox 88+", "Safari 14+", "Edge 90+"],
+      "css": "CSS Custom Properties",
+      "javascript": "ES6+ Modules"
+    },
+    "usage": {
+      "css": "Use CSS custom properties: var(--royal-midnight)",
+      "javascript": "Import from tokens.css or use CSS.supports()",
+      "design-tools": "Import as JSON for Figma/Sketch plugins"
+    }
+  }
+}

@@ -1,0 +1,47 @@
+﻿'use client'
+import Link from 'next/link'
+import {usePathname} from 'next/navigation'
+import ThemeToggle from './ThemeToggle'
+import { useState, useEffect, useRef } from 'react'
+const links = [
+  {href:'/', label:'Home'},
+  {href:'/live', label:'Live'},
+  {href:'/clips', label:'Clips'},
+  {href:'/strategy', label:'Strategy'},
+  {href:'/community', label:'Community'},
+]
+export default function Navigation(){
+  const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+  const btnRef = useRef<HTMLButtonElement>(null)
+  useEffect(()=>{ setOpen(false) }, [pathname])
+  return (
+    <header role="banner" className="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-black/40">
+      <nav aria-label="primary" className="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-4 py-3">
+        <div className="flex items-center gap-3">
+          <button ref={btnRef} aria-expanded={open} aria-controls="nav-drawer" className="md:hidden rounded-lg border px-2 py-1" onClick={()=>setOpen(v=>!v)}>â˜°<span className="sr-only">Menu</span></button>
+          <Link href="/" className="font-semibold tracking-tight">ProPokerTV</Link>
+        </div>
+        <ul className="hidden md:flex items-center gap-2" role="menubar">
+          {links.map(l => (
+            <li role="none" key={l.href}>
+              <Link role="menuitem" href={l.href} className={`rounded-xl px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 ${pathname===l.href? 'font-semibold underline-offset-4 underline':''}`}>{l.label}</Link>
+            </li>
+          ))}
+        </ul>
+        <div className="flex items-center gap-2">
+          <Link href="/search" className="rounded-xl px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800" aria-label="Search">ðŸ”Ž</Link>
+          <Link href="/profile" className="rounded-xl px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800">Profile</Link>
+          <ThemeToggle/>
+        </div>
+      </nav>
+      <div id="nav-drawer" className={`md:hidden ${open? '':'hidden'}`}>
+        <ul className="mx-4 mb-3 grid gap-2 rounded-2xl border p-3 shadow-md" role="menu">
+          {links.map(l => (
+            <li role="none" key={l.href}><Link role="menuitem" href={l.href} className="block rounded-xl px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800">{l.label}</Link></li>
+          ))}
+        </ul>
+      </div>
+    </header>
+  )
+}

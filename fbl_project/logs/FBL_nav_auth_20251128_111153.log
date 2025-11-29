@@ -1,0 +1,13 @@
+2025-11-28T11:11:55.0438921+01:00	[INFO]	Starting nav + auth sync in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T11:11:55.6580856+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T11:11:56.9143620+01:00	[WARN]	Missing source for API auth/[...nextauth] at G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\api\auth\[...nextauth]\route.ts
+2025-11-28T11:11:57.1223746+01:00	[INFO]	Backed up existing Login page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\login\page.tsx.bak_20251128_111153
+2025-11-28T11:11:57.1277907+01:00	[INFO]	Synced Login page from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\login\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\login\page.tsx
+2025-11-28T11:11:57.1613961+01:00	[INFO]	Backed up existing Register page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\register\page.tsx.bak_20251128_111153
+2025-11-28T11:11:57.1723937+01:00	[INFO]	Synced Register page from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\register\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\register\page.tsx
+2025-11-28T11:11:57.1922573+01:00	[INFO]	Backed up existing Profile page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\profile\page.tsx.bak_20251128_111153
+2025-11-28T11:11:57.1935839+01:00	[INFO]	Synced Profile page from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\profile\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\profile\page.tsx
+2025-11-28T11:11:57.2190205+01:00	[INFO]	Backed up TopNav.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\TopNav.tsx.bak_20251128_111153
+2025-11-28T11:11:57.3241018+01:00	[INFO]	Wrote new TopNav.tsx with clearer nav + Login/Claim seat
+2025-11-28T11:11:57.3392867+01:00	[INFO]	Nav + auth sync completed
+2025-11-28T11:11:57.3455973+01:00	[INFO]	Log signed successfully

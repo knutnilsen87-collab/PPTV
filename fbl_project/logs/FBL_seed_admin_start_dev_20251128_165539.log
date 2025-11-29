@@ -1,0 +1,24 @@
+2025-11-28T16:55:41.1568563+01:00	[INFO]	Starting admin seed + dev in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T16:55:41.6706800+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T16:55:42.5722757+01:00	[INFO]	Running pnpm db:seed:users
+The filename, directory name, or volume label syntax is incorrect.
+undefined
+ÔÇëERR_PNPM_RECURSIVE_EXEC_FIRST_FAILÔÇë Command "db:seed:users" not found
+
+Did you mean "pnpm db:seed"?
+2025-11-28T16:55:43.2356425+01:00	[ERROR]	db:seed:users failed with code 1
+2025-11-28T16:55:43.3954223+01:00	[INFO]	Starting pnpm dev
+
+> propokertv@0.1.0 dev G:\PPTVGITHBNUB\ProPokerTV_merged
+> next dev
+
+ ÔÜá Port 3000 is in use by an unknown process, using available port 3001 instead.
+   Ôû▓ Next.js 15.5.6
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.68.66:3001
+   - Environments: .env
+
+ Ô£ô Starting...
+ Ô£ô Ready in 1741ms
+2025-11-28T16:55:55.3284388+01:00	[INFO]	Admin seed + dev command finished (dev may still be running interactively)
+2025-11-28T16:55:55.3362078+01:00	[INFO]	Log signed successfully

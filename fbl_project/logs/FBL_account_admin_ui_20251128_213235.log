@@ -1,0 +1,6 @@
+2025-11-28T21:32:38.0017380+01:00	[INFO]	Starting account + admin placeholder setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T21:32:41.3461871+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T21:32:45.9780191+01:00	[INFO]	Backed up account page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_20251128_213235
+2025-11-28T21:32:46.0236008+01:00	[INFO]	Backed up admin page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx.bak_20251128_213235
+2025-11-28T21:32:46.0558562+01:00	[INFO]	Account + admin placeholders written
+2025-11-28T21:32:46.0734334+01:00	[INFO]	Log signed successfully

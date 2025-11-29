@@ -1,0 +1,351 @@
+﻿'use client';
+
+import React, { useState } from 'react';
+import Navigation from '@/components/Navigation';
+import Image from 'next/image';
+import { 
+  TrophyIcon,
+  StarIcon,
+  PlayIcon,
+  HeartIcon,
+  EyeIcon,
+  ShareIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  CalendarIcon,
+  UsersIcon,
+  FireIcon
+} from '@heroicons/react/24/outline';
+import Link from 'next/link';
+
+export default function PlayOfTheWeekPage() {
+  const [selectedNominee, setSelectedNominee] = useState(0);
+  const [hasVoted, setHasVoted] = useState(false);
+
+  // Current nominees with real Unsplash images
+  const nominees = [
+    {
+      id: 1,
+      title: "Incredible Bluff at WSOP Main Event",
+      player: "Alex Chen",
+      description: "A masterful bluff that won the tournament. The player shows incredible skill and nerve in this high-stakes situation.",
+      image: "/images/thumbnails/amazing-bluff.jpeg",
+      votes: 1234,
+      views: "2.5M",
+      likes: "45K",
+      tournament: "WSOP Main Event 2024",
+      buyin: "$10,000"
+    },
+    {
+      id: 2,
+      title: "Perfect Read on River Bet",
+      player: "Maria Rodriguez",
+      description: "An amazing read that saved the player from a huge loss. Textbook example of reading opponents.",
+      image: "/images/thumbnails/best-moments.jpeg",
+      votes: 987,
+      views: "1.8M",
+      likes: "32K",
+      tournament: "High Stakes Cash Game",
+      buyin: "$25,000"
+    },
+    {
+      id: 3,
+      title: "All-In Hero Call",
+      player: "David Kim",
+      description: "A gutsy hero call that turned out to be correct. The player trusted their instincts and it paid off.",
+      image: "/images/thumbnails/wsop-main.jpeg",
+      votes: 756,
+      views: "1.2M",
+      likes: "28K",
+      tournament: "Online Championship",
+      buyin: "$5,000"
+    }
+  ];
+
+  // Past winners
+  const pastWinners = [
+    {
+      id: 1,
+      title: "Amazing River Bluff",
+      player: "Sarah Johnson",
+      date: "March 2024",
+      votes: 2156,
+      image: "/images/thumbnails/live-stream.jpeg"
+    },
+    {
+      id: 2,
+      title: "Perfect ICM Decision",
+      player: "Mike Thompson",
+      date: "February 2024",
+      votes: 1892,
+      image: "/images/thumbnails/high-stakes.jpeg"
+    },
+    {
+      id: 3,
+      title: "Incredible Fold",
+      player: "Lisa Wang",
+      date: "January 2024",
+      votes: 1678,
+      image: "/images/thumbnails/strategy.jpeg"
+    }
+  ];
+
+  const handleVote = () => {
+    if (!hasVoted) {
+      setHasVoted(true);
+      // In a real app, this would make an API call
+      console.log(`Voted for nominee ${nominees[selectedNominee].id}`);
+    }
+  };
+
+  const nextNominee = () => {
+    setSelectedNominee((prev) => (prev + 1) % nominees.length);
+  };
+
+  const prevNominee = () => {
+    setSelectedNominee((prev) => (prev - 1 + nominees.length) % nominees.length);
+  };
+
+  return (
+    <div className="min-h-screen bg-poker-950">
+      <Navigation />
+      
+      <main className="container-custom py-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <div className="w-12 h-12 bg-accent-gold/20 rounded-xl flex items-center justify-center">
+              <TrophyIcon className="w-6 h-6 text-accent-gold" />
+            </div>
+            <h1 className="text-h1 font-bold text-poker-100">Play of the Week</h1>
+          </div>
+          <p className="text-poker-300 max-w-2xl mx-auto">
+            Vote for your favorite poker hand of the week. Watch the nominees, cast your vote, 
+            and see who takes home the title!
+          </p>
+        </div>
+
+        {/* Current Nominees */}
+        <div className="mb-16">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-h2 font-bold text-poker-100">Current Nominees</h2>
+            <div className="flex items-center space-x-4 text-sm text-poker-400">
+              <CalendarIcon className="w-4 h-4" />
+              <span>Voting ends in 2 days</span>
+            </div>
+          </div>
+
+          {/* Nominee Carousel */}
+          <div className="relative">
+            <div className="card overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* Video Preview */}
+                <div className="aspect-video bg-poker-800 relative">
+                  <Image
+                    src={nominees[selectedNominee].image}
+                    alt={nominees[selectedNominee].title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-poker-950/60 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button className="w-16 h-16 bg-accent-green/90 rounded-full flex items-center justify-center hover:bg-accent-green transition-colors">
+                      <PlayIcon className="w-8 h-8 text-white" />
+                    </button>
+                  </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="badge badge-gold">
+                      <StarIcon className="w-4 h-4 mr-1" />
+                      Nominee #{selectedNominee + 1}
+                    </div>
+                  </div>
+                  <div className="absolute bottom-4 left-4">
+                    <div className="bg-poker-950/80 rounded-lg px-3 py-1 text-sm text-poker-100">
+                      Live Vote Count
+                    </div>
+                  </div>
+                </div>
+
+                {/* Nominee Info */}
+                <div className="p-8">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-2xl font-bold text-poker-100">{nominees[selectedNominee].title}</h3>
+                    <div className="text-accent-gold font-bold text-xl">{nominees[selectedNominee].votes} votes</div>
+                  </div>
+                  
+                  <div className="flex items-center space-x-4 mb-6">
+                    <div className="w-12 h-12 bg-poker-800/50 rounded-full flex items-center justify-center border border-accent-green/30">
+                      <span className="text-accent-green font-bold">{nominees[selectedNominee].player.charAt(0)}</span>
+                    </div>
+                    <div>
+                      <div className="text-poker-100 font-medium">{nominees[selectedNominee].player}</div>
+                      <div className="text-sm text-poker-400">{nominees[selectedNominee].tournament}</div>
+                    </div>
+                  </div>
+
+                  <p className="text-poker-300 mb-6">{nominees[selectedNominee].description}</p>
+
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="glass rounded-lg p-3">
+                      <div className="text-sm text-poker-400">Tournament</div>
+                      <div className="text-poker-100 font-medium">{nominees[selectedNominee].tournament}</div>
+                    </div>
+                    <div className="glass rounded-lg p-3">
+                      <div className="text-sm text-poker-400">Buy-in</div>
+                      <div className="text-poker-100 font-medium">{nominees[selectedNominee].buyin}</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-4 text-sm text-poker-400">
+                      <span className="flex items-center">
+                        <EyeIcon className="w-4 h-4 mr-1" />
+                        {nominees[selectedNominee].views}
+                      </span>
+                      <span className="flex items-center">
+                        <HeartIcon className="w-4 h-4 mr-1" />
+                        {nominees[selectedNominee].likes}
+                      </span>
+                    </div>
+                    <button className="text-poker-400 hover:text-poker-300">
+                      <ShareIcon className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <div className="flex space-x-4">
+                    <button 
+                      onClick={handleVote}
+                      disabled={hasVoted}
+                      className={`flex-1 flex items-center justify-center space-x-2 py-3 rounded-xl font-bold transition-all ${
+                        hasVoted 
+                          ? 'bg-accent-green/20 text-accent-green cursor-not-allowed'
+                          : 'bg-gradient-to-r from-accent-gold to-yellow-400 text-poker-950 hover:shadow-2xl hover:shadow-accent-gold/25 hover:scale-105'
+                      }`}
+                    >
+                      <TrophyIcon className="w-5 h-5" />
+                      <span>{hasVoted ? 'Voted!' : 'Vote Now'}</span>
+                    </button>
+                    <button className="btn-secondary flex-1">Share</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="absolute top-1/2 left-4 transform -translate-y-1/2">
+              <button
+                onClick={prevNominee}
+                className="w-10 h-10 bg-poker-800/50 rounded-full flex items-center justify-center text-poker-300 hover:text-poker-100 hover:bg-poker-700/50 transition-colors"
+              >
+                <ChevronLeftIcon className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
+              <button
+                onClick={nextNominee}
+                className="w-10 h-10 bg-poker-800/50 rounded-full flex items-center justify-center text-poker-300 hover:text-poker-100 hover:bg-poker-700/50 transition-colors"
+              >
+                <ChevronRightIcon className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Nominee Indicators */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {nominees.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedNominee(index)}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === selectedNominee 
+                    ? 'bg-accent-gold' 
+                    : 'bg-poker-600 hover:bg-poker-500'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Past Winners */}
+        <div>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-h2 font-bold text-poker-100">Past Winners</h2>
+            <Link href="/past-winners" className="text-accent-green hover:text-accent-green/80 font-medium transition-colors flex items-center space-x-2">
+              <span>View All Winners</span>
+              <ChevronRightIcon className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {pastWinners.map((winner) => (
+              <div key={winner.id} className="card overflow-hidden hover-lift">
+                <div className="aspect-video bg-poker-800 relative">
+                  <Image
+                    src={winner.image}
+                    alt={winner.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-poker-950/60 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button className="w-12 h-12 bg-accent-green/80 rounded-full flex items-center justify-center hover:bg-accent-green transition-colors">
+                      <PlayIcon className="w-6 h-6 text-white" />
+                    </button>
+                  </div>
+                  <div className="absolute top-2 right-2">
+                    <div className="badge badge-gold">
+                      <TrophyIcon className="w-3 h-3 mr-1" />
+                      Winner
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-medium text-poker-100 mb-2">{winner.title}</h3>
+                  <div className="flex items-center justify-between text-sm text-poker-400 mb-2">
+                    <span>{winner.player}</span>
+                    <span>{winner.date}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-1 text-accent-gold">
+                      <TrophyIcon className="w-4 h-4" />
+                      <span className="font-medium">{winner.votes} votes</span>
+                    </div>
+                    <button className="text-poker-400 hover:text-poker-300">
+                      <ShareIcon className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Voting Stats */}
+        <div className="mt-16">
+          <div className="card p-8">
+            <h3 className="text-xl font-bold text-poker-100 mb-6 text-center">Voting Statistics</h3>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {[
+                { label: 'Total Votes', value: '3,245', icon: HeartIcon, color: 'accent-green' },
+                { label: 'Active Voters', value: '1,234', icon: UsersIcon, color: 'accent-blue' },
+                { label: 'Days Remaining', value: '2', icon: CalendarIcon, color: 'accent-gold' },
+                { label: 'Previous Winner', value: '2,156', icon: TrophyIcon, color: 'accent-purple' }
+              ].map((stat, index) => {
+                const Icon = stat.icon;
+                return (
+                  <div key={index} className="text-center">
+                    <div className={`w-12 h-12 bg-${stat.color}/20 rounded-xl flex items-center justify-center mx-auto mb-3`}>
+                      <Icon className={`w-6 h-6 text-${stat.color}`} />
+                    </div>
+                    <div className="text-2xl font-bold text-poker-100 mb-1">{stat.value}</div>
+                    <div className="text-sm text-poker-400">{stat.label}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}

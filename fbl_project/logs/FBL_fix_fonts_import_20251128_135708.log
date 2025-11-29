@@ -1,0 +1,5 @@
+2025-11-28T13:57:08.4707270+01:00	[INFO]	Starting fonts import fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T13:57:08.8836524+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T13:57:08.9703143+01:00	[INFO]	Copied src/app/fonts.ts to app/fonts.ts
+2025-11-28T13:57:09.0548312+01:00	[INFO]	Fonts import fix completed
+2025-11-28T13:57:09.0611819+01:00	[INFO]	Log signed successfully

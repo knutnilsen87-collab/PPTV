@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Brand tokens (variables only) */
+@import "../styles/tokens.css";
+
+/* A11y */
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;z-index:50;padding:.5rem .75rem;border-radius:.5rem;background:#111C2D;color:#F4EBD0;box-shadow:var(--shadow-e1);}

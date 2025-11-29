@@ -1,0 +1,40 @@
+'use client'
+import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
+import ThemeToggle from './ThemeToggle'
+import Container from './Container'
+
+export default function TopNav(){
+  const [open, setOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+  useEffect(()=>{ const onKey=(e:KeyboardEvent)=>{ if(e.key==='Escape') setOpen(false) }; document.addEventListener('keydown', onKey); return ()=>document.removeEventListener('keydown', onKey) },[])
+  useEffect(()=>{ const onClick=(e:MouseEvent)=>{ if(open && menuRef.current && !menuRef.current.contains(e.target as Node)) setOpen(false) }; document.addEventListener('click', onClick); return ()=>document.removeEventListener('click', onClick) },[open])
+  return (
+    <header className='sticky top-0 z-50 glass border-b border-brand/50'>
+      <Container className='h-16 flex items-center justify-between'>
+        <div className='flex items-center gap-3'>
+          <Link href='/' className='font-display text-lg'>ProPokerTV</Link>
+          <div className='relative' ref={menuRef}>
+            <button aria-haspopup='true' aria-expanded={open} onClick={()=>setOpen(v=>!v)} className='rounded-2xl border border-brand px-3 py-1.5 text-sm'>Explore ▾</button>
+            {open && (
+              <div role='menu' className='absolute left-0 mt-2 grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-xl border border-brand bg-[--color-secondary] p-3 shadow-elevate'>
+                <div className='min-w-[180px]'><p className='text-xs text-poker-muted mb-1'>Topics</p><a className='block rounded-xl px-3 py-2 hover:bg-white/5' href='#'>Cash</a><a className='block rounded-xl px-3 py-2 hover:bg-white/5' href='#'>MTT</a><a className='block rounded-xl px-3 py-2 hover:bg-white/5' href='#'>Short Deck</a></div>
+                <div className='min-w-[220px]'><p className='text-xs text-poker-muted mb-1'>Live now</p><a className='block rounded-xl px-3 py-2 hover:bg-white/5' href='#'>High Stakes</a><a className='block rounded-xl px-3 py-2 hover:bg-white/5' href='#'>Creator League</a></div>
+                <div className='min-w-[220px]'><p className='text-xs text-poker-muted mb-1'>Upcoming</p><a className='block rounded-xl px-3 py-2 hover:bg-white/5' href='#'>Sunday Million</a><a className='block rounded-xl px-3 py-2 hover:bg-white/5' href='#'>EPT Prague</a></div>
+              </div>
+            )}
+          </div>
+          <Link className='rounded-2xl border border-brand px-3 py-1.5 text-sm' href='/live'>Live</Link>
+          <Link className='rounded-2xl border border-brand px-3 py-1.5 text-sm' href='/clips'>Clips</Link>
+          <Link className='rounded-2xl border border-brand px-3 py-1.5 text-sm' href='/calendar'>Calendar</Link>
+          <Link className='rounded-2xl border border-brand px-3 py-1.5 text-sm' href='/community'>Community</Link>
+        </div>
+        <div className='flex items-center gap-2'>
+          <Link href='/search' className='rounded-2xl border border-brand px-3 py-1.5 text-sm'>Search</Link>
+          <Link href='/profile' className='rounded-2xl bg-[--color-accent-gold] text-black px-3 py-1.5 text-sm hover:brightness-110 transition'>Profile</Link>
+          <ThemeToggle/>
+        </div>
+      </Container>
+    </header>
+  )
+}

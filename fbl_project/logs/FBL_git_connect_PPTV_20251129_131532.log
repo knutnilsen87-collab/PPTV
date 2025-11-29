@@ -1,0 +1,6 @@
+2025-11-29T13:15:32.9289267+01:00	[INFO]	Starting git + GitHub connect in G:\PPTVGITHBNUB\ProPokerTV_merged (remote = https://github.com/knutnilsen87-collab/PPTV.git)
+2025-11-29T13:15:32.9940432+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T13:15:33.1088566+01:00	[INFO]	git detected: git version 2.51.2.windows.1
+2025-11-29T13:15:33.1793762+01:00	[INFO]	Initialized new git repository
+2025-11-29T13:15:33.4092883+01:00	[INFO]	Added remote origin = https://github.com/knutnilsen87-collab/PPTV.git
+2025-11-29T13:15:33.4730627+01:00	[INFO]	Current branch is master (not main). Will push that branch to origin.

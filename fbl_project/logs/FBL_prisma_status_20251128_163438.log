@@ -1,0 +1,7 @@
+2025-11-28T16:34:38.2092499+01:00	[INFO]	Prisma status snapshot in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T16:34:38.2233798+01:00	[INFO]	Running pnpm prisma validate
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+The schema at prisma\schema.prisma is valid ­ƒÜÇ
+2025-11-28T16:34:39.3684872+01:00	[INFO]	prisma validate completed successfully
+2025-11-28T16:34:39.4363785+01:00	[INFO]	Log signed successfully

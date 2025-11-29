@@ -1,0 +1,22 @@
+import "./globals.css";
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { inter } from "./fonts";
+import Navigation from "@/components/Navigation";
+
+export const metadata: Metadata = {
+  title: "ProPokerTV",
+  description:
+    "Underholdning, profesjonalitet og lidenskap for poker — i ett univers.",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="no" className={inter.className}>
+      <body className="bg-slate-950 text-white">
+        <Navigation />
+        <main>{children}</main>
+      </body>
+    </html>
+  );
+}

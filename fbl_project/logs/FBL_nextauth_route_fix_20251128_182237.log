@@ -1,0 +1,6 @@
+2025-11-28T18:22:39.8815748+01:00	[INFO]	Starting NextAuth hardwire in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T18:22:40.4642096+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T18:22:41.1245991+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\auth\[...nextauth]
+2025-11-28T18:22:41.6478093+01:00	[INFO]	Wrote hardwired NextAuth route at app/api/auth/[...nextauth]/route.ts
+2025-11-28T18:22:41.7470444+01:00	[INFO]	NextAuth route hardwire finished
+2025-11-28T18:22:41.7961645+01:00	[INFO]	Log signed successfully

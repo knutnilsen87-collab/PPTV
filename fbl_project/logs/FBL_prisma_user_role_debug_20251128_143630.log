@@ -1,0 +1,87 @@
+2025-11-28T14:36:30.7135590+01:00	[INFO]	Starting prisma debug run in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T14:36:30.7286313+01:00	[INFO]	Running pnpm prisma migrate dev --name add_user_profile_role
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Datasource "db": SQLite database "dev.db" at "file:./dev.db"
+
+
+Error: Prisma schema validation - (validate wasm)
+Error code: P1012
+error: Type "Account" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:17
+   | 
+16 | 
+17 |   accounts       Account[]
+   | 
+error: Type "Session" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:18
+   | 
+17 |   accounts       Account[]
+18 |   sessions       Session[]
+   | 
+error: Type "Video" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:19
+   | 
+18 |   sessions       Session[]
+19 |   videos         Video[]
+   | 
+error: Type "Vote" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:20
+   | 
+19 |   videos         Video[]
+20 |   votes          Vote[]
+   | 
+error: Type "Role" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:21
+   | 
+20 |   votes          Vote[]
+21 |   role             Role   @default(USER)
+   | 
+
+Validation Error Count: 5
+[Context: validate]
+
+Prisma CLI Version : 6.19.0
+2025-11-28T14:36:31.8078702+01:00	[ERROR]	prisma migrate dev failed with code 1
+2025-11-28T14:36:31.8203361+01:00	[INFO]	Running pnpm prisma generate
+Environment variables loaded from .env
+Prisma schema loaded from prisma\schema.prisma
+Error: Prisma schema validation - (get-dmmf wasm)
+Error code: P1012
+error: Type "Account" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:17
+   | 
+16 | 
+17 |   accounts       Account[]
+   | 
+error: Type "Session" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:18
+   | 
+17 |   accounts       Account[]
+18 |   sessions       Session[]
+   | 
+error: Type "Video" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:19
+   | 
+18 |   sessions       Session[]
+19 |   videos         Video[]
+   | 
+error: Type "Vote" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:20
+   | 
+19 |   videos         Video[]
+20 |   votes          Vote[]
+   | 
+error: Type "Role" is neither a built-in type, nor refers to another model, composite type, or enum.
+  -->  prisma\schema.prisma:21
+   | 
+20 |   votes          Vote[]
+21 |   role             Role   @default(USER)
+   | 
+
+Validation Error Count: 5
+[Context: getDmmf]
+
+Prisma CLI Version : 6.19.0
+2025-11-28T14:36:32.8370389+01:00	[ERROR]	prisma generate failed with code 1
+2025-11-28T14:36:32.8425527+01:00	[INFO]	Prisma debug run finished

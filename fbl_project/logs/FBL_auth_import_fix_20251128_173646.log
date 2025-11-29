@@ -1,0 +1,10 @@
+2025-11-28T17:36:46.4053244+01:00	[INFO]	Starting auth import fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T17:36:46.9503644+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T17:36:48.0979053+01:00	[INFO]	lib/auth.ts already exists
+2025-11-28T17:36:48.2963930+01:00	[INFO]	Backed up G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_20251128_173646
+2025-11-28T17:36:48.2975099+01:00	[INFO]	Updated auth import in G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx -> ../../lib/auth
+2025-11-28T17:36:48.3033212+01:00	[INFO]	Backed up G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx.bak_20251128_173646
+2025-11-28T17:36:48.3144382+01:00	[INFO]	Updated auth import in G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx -> ../../lib/auth
+2025-11-28T17:36:48.4391448+01:00	[WARN]	NextAuth route not found at G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\auth\[...nextauth]\route.ts
+2025-11-28T17:36:48.4567644+01:00	[INFO]	Auth import fix completed
+2025-11-28T17:36:48.4663686+01:00	[INFO]	Log signed successfully

@@ -1,0 +1,6 @@
+2025-11-27T22:10:55.4229938+01:00	[INFO]	Starting video detail setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T22:10:55.4673165+01:00	[INFO]	Using existing RSA keypair
+2025-11-27T22:10:55.5342949+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\video\[id]
+2025-11-27T22:10:55.6918055+01:00	[INFO]	Wrote app/video/[id]/page.tsx
+2025-11-27T22:10:55.6974757+01:00	[INFO]	Video detail setup completed
+2025-11-27T22:10:55.7043432+01:00	[INFO]	Log signed successfully

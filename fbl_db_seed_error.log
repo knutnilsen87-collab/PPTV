@@ -1,0 +1,34 @@
+
+> propokertv@0.1.0 db:seed G:\PPTVGITHBNUB\ProPokerTV_merged
+> npx tsx prisma/seed/videoSeed.ts
+
+npm warn Unknown env config "ignore-workspace-root-check". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+node:internal/modules/cjs/loader:1383
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module '.prisma/client/default'
+Require stack:
+- G:\PPTVGITHBNUB\ProPokerTV_merged\node_modules\.pnpm\@prisma+client@6.19.0_prism_0ade0c2032e7f19289902b884120cfab\node_modules\@prisma\client\default.js
+- G:\PPTVGITHBNUB\ProPokerTV_merged\prisma\seed\videoSeed.ts
+    at node:internal/modules/cjs/loader:1383:15
+    at nextResolveSimple (C:\Users\Knut Stien Nilsen\AppData\Local\npm-cache\_npx\fd45a72a545557e9\node_modules\tsx\dist\register-D46fvsV_.cjs:4:1004)
+    at C:\Users\Knut Stien Nilsen\AppData\Local\npm-cache\_npx\fd45a72a545557e9\node_modules\tsx\dist\register-D46fvsV_.cjs:3:2630
+    at C:\Users\Knut Stien Nilsen\AppData\Local\npm-cache\_npx\fd45a72a545557e9\node_modules\tsx\dist\register-D46fvsV_.cjs:3:1542
+    at resolveTsPaths (C:\Users\Knut Stien Nilsen\AppData\Local\npm-cache\_npx\fd45a72a545557e9\node_modules\tsx\dist\register-D46fvsV_.cjs:4:760)
+    at C:\Users\Knut Stien Nilsen\AppData\Local\npm-cache\_npx\fd45a72a545557e9\node_modules\tsx\dist\register-D46fvsV_.cjs:4:1102
+    at m._resolveFilename (file:///C:/Users/Knut%20Stien%20Nilsen/AppData/Local/npm-cache/_npx/fd45a72a545557e9/node_modules/tsx/dist/register-B7jrtLTO.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    'G:\\PPTVGITHBNUB\\ProPokerTV_merged\\node_modules\\.pnpm\\@prisma+client@6.19.0_prism_0ade0c2032e7f19289902b884120cfab\\node_modules\\@prisma\\client\\default.js',
+    'G:\\PPTVGITHBNUB\\ProPokerTV_merged\\prisma\\seed\\videoSeed.ts'
+  ]
+}
+
+Node.js v22.20.0
+ÔÇëELIFECYCLEÔÇë Command failed with exit code 1.

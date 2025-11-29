@@ -1,0 +1,8 @@
+2025-11-28T17:13:11.2793147+01:00	[INFO]	Starting magic-link replacement in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T17:13:14.3166542+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T17:13:14.7444547+01:00	[INFO]	Searching for text: We will send you a magic link to sign in.
+2025-11-28T17:13:15.3104630+01:00	[INFO]	Found magic-link login in G:\PPTVGITHBNUB\ProPokerTV_merged\app\login\page.tsx
+2025-11-28T17:13:15.4814655+01:00	[INFO]	Backed up login component to G:\PPTVGITHBNUB\ProPokerTV_merged\app\login\page.tsx.bak_20251128_171309
+2025-11-28T17:13:15.6680484+01:00	[INFO]	Replaced magic-link login component with credentials login in G:\PPTVGITHBNUB\ProPokerTV_merged\app\login\page.tsx
+2025-11-28T17:13:15.6800861+01:00	[INFO]	Magic-link replacement finished
+2025-11-28T17:13:15.6876119+01:00	[INFO]	Log signed successfully

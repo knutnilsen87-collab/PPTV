@@ -1,0 +1,8 @@
+2025-11-27T22:39:48.9080712+01:00	[INFO]	Starting /video/[id] route fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T22:39:48.9593100+01:00	[INFO]	Using existing RSA keypair
+2025-11-27T22:39:49.2058623+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\video\[id]
+2025-11-27T22:39:49.2329356+01:00	[INFO]	Wrote app/video/[id]/page.tsx
+2025-11-27T22:39:49.2574035+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]
+2025-11-27T22:39:49.2843072+01:00	[INFO]	Wrote src/app/video/[id]/page.tsx
+2025-11-27T22:39:49.2924439+01:00	[INFO]	/video/[id] route fix completed
+2025-11-27T22:39:49.2990496+01:00	[INFO]	Log signed successfully

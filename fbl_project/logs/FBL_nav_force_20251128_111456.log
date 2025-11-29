@@ -1,0 +1,8 @@
+2025-11-28T11:14:58.1730801+01:00	[INFO]	Starting forced nav update in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-28T11:14:58.6358731+01:00	[INFO]	Using existing RSA keypair
+2025-11-28T11:15:01.3642109+01:00	[INFO]	Backed up Navigation.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\Navigation.tsx.bak_20251128_111456
+2025-11-28T11:15:01.4735567+01:00	[INFO]	Wrote new src/components/Navigation.tsx
+2025-11-28T11:15:01.5224062+01:00	[INFO]	Backed up TopNav.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\TopNav.tsx.bak_20251128_111456
+2025-11-28T11:15:01.5345838+01:00	[INFO]	Wrote new src/components/TopNav.tsx
+2025-11-28T11:15:01.5432022+01:00	[INFO]	Forced nav update completed
+2025-11-28T11:15:01.5524013+01:00	[INFO]	Log signed successfully

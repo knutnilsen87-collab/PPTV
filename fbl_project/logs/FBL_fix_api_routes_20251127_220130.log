@@ -1,0 +1,8 @@
+2025-11-27T22:01:30.4018354+01:00	[INFO]	Starting API route fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-27T22:01:30.4426592+01:00	[INFO]	Using existing RSA keypair
+2025-11-27T22:01:30.5287314+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\videos
+2025-11-27T22:01:30.5398913+01:00	[INFO]	Copied API route videos from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\api\videos\route.ts to G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\videos\route.ts
+2025-11-27T22:01:30.5454020+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\votes
+2025-11-27T22:01:30.5469954+01:00	[INFO]	Copied API route votes from G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\api\votes\route.ts to G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\votes\route.ts
+2025-11-27T22:01:30.5530927+01:00	[INFO]	API route fix completed
+2025-11-27T22:01:30.5589146+01:00	[INFO]	Log signed successfully

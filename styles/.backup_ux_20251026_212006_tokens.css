@@ -1,0 +1,18 @@
+@layer base {
+  :root {
+    --bg-primary: #111C2D;
+    --bg-secondary: #0E1624;
+    --surface-card: #0F1A2A;
+    --text-primary: #F4EBD0;
+    --text-secondary: rgba(244,235,208,0.72);
+    --gold-500: #D8A928;
+    --gold-600: #C7981F;
+    --gold-700: #A77F16;
+    --poker-red-500: #C92007;
+    --radius-button: 12px;
+    --radius-card: 16px;
+    --shadow-e1: 0 6px 20px rgba(0,0,0,0.35);
+  }
+  html { color-scheme: dark; }
+  body { background: radial-gradient(1200px 800px at 50% 0%, #14223A 0%, #0E1624 55%, #0B1321 100%); }
+}
