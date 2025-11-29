@@ -1,0 +1,8 @@
+2025-11-29T13:38:46.6310236+01:00	[INFO]	Starting db fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T13:38:46.8843439+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T13:38:48.0543977+01:00	[INFO]	Backed up existing lib/db.ts to G:\PPTVGITHBNUB\ProPokerTV_merged\lib\db.ts.bak_20251129_133846
+2025-11-29T13:38:48.0943262+01:00	[INFO]	Wrote new lib/db.ts with PrismaClient and named export db
+2025-11-29T13:38:48.1441213+01:00	[INFO]	Backed up account page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_dbfix_20251129_133846
+2025-11-29T13:38:48.1475751+01:00	[INFO]	Normalized db import in app/account/page.tsx to use @/lib/db
+2025-11-29T13:38:48.1579897+01:00	[INFO]	Prisma db export + import fix completed
+2025-11-29T13:38:48.1660494+01:00	[INFO]	Log signed successfully

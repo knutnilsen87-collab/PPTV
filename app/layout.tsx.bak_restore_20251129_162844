@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-
-// Global styles (Tailwind m.m.)
-import "./globals.css";
-
-// Font config
 import { inter } from "@/app/fonts";
-
-// Top navigation
+// Viktig: relativ sti til src/components/Navigation
 import Navigation from "../src/components/Navigation";
-
-// Session provider wrapper for next-auth (defined in app/providers.tsx)
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {

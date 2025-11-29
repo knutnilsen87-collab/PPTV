@@ -1,0 +1,8 @@
+2025-11-29T13:29:21.4138701+01:00	[INFO]	Starting db bridge + admin dashboard in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T13:29:24.0696274+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T13:29:25.2174325+01:00	[INFO]	Found src/lib/db.ts at G:\PPTVGITHBNUB\ProPokerTV_merged\src\lib\db.ts
+2025-11-29T13:29:25.9836031+01:00	[INFO]	Wrote bridge lib/db.ts that re-exports from ../src/lib/db
+2025-11-29T13:29:26.4467499+01:00	[INFO]	Backed up existing admin page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx.bak_20251129_132919
+2025-11-29T13:29:31.9002422+01:00	[INFO]	Admin dashboard page written to G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx
+2025-11-29T13:29:31.9200501+01:00	[INFO]	db bridge + admin dashboard setup completed
+2025-11-29T13:29:31.9762525+01:00	[INFO]	Log signed successfully

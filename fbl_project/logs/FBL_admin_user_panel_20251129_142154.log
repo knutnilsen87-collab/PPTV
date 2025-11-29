@@ -1,0 +1,6 @@
+2025-11-29T14:21:54.3250585+01:00	[INFO]	Starting admin user panel setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T14:21:54.3603891+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T14:21:54.4305733+01:00	[INFO]	Backed up admin page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx.bak_20251129_142154
+2025-11-29T14:21:54.7529397+01:00	[INFO]	Admin user management page written
+2025-11-29T14:21:54.7622798+01:00	[INFO]	Admin user panel setup finished
+2025-11-29T14:21:54.7695462+01:00	[INFO]	Log signed successfully

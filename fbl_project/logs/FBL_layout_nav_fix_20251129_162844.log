@@ -1,0 +1,6 @@
+2025-11-29T16:28:44.6280759+01:00	[INFO]	Starting RootLayout + Navigation fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T16:28:44.6908525+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T16:28:44.8028380+01:00	[INFO]	Backed up app/layout.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\layout.tsx.bak_restore_20251129_162844
+2025-11-29T16:28:44.8768206+01:00	[INFO]	Rewrote app/layout.tsx with globals.css import, Navigation and Providers
+2025-11-29T16:28:44.8921062+01:00	[INFO]	RootLayout + Navigation fix completed
+2025-11-29T16:28:44.8995295+01:00	[INFO]	Log signed successfully

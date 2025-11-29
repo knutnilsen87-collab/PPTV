@@ -12,7 +12,7 @@ const highlights: MockVideo[] = [
   {
     id: 1,
     title: "High stakes hero call on the river",
-    player: "Alex \\"Ice\\" Larsen",
+    player: "Alex \"Ice\" Larsen",
     stakes: "€5/€10 Cash",
     length: "08:42",
   },
@@ -37,44 +37,67 @@ const clips: MockVideo[] = [
     id: 4,
     title: "Snap call with pocket deuces",
     player: "Nova",
-    stakes: "Tag: Clips",
+    stakes: "Clips",
     length: "00:37",
   },
   {
     id: 5,
     title: "Running it twice vs. the reg",
     player: "GrinderX",
-    stakes: "Tag: Clips",
+    stakes: "Clips",
     length: "00:54",
   },
   {
     id: 6,
     title: "Streamer cooler – set over set",
     player: "StreamLab",
-    stakes: "Tag: Clips",
+    stakes: "Clips",
     length: "01:12",
   },
   {
     id: 7,
     title: "Slowroll or Hollywood?",
     player: "TBD",
-    stakes: "Tag: Clips",
+    stakes: "Clips",
     length: "00:29",
   },
 ];
 
-export default function HomePage() {
+export default function DesignPreviewPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
+      <header className="border-b border-slate-800/70 bg-slate-950/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-400/90 text-slate-950 font-bold text-sm">
+              ♠
+            </div>
+            <div className="flex flex-col leading-tight">
+              <span className="text-sm font-semibold tracking-wide">ProPokerTV</span>
+              <span className="text-[11px] text-slate-400 uppercase tracking-[0.16em]">
+                Design preview
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 text-xs text-slate-400">
+            <span className="hidden sm:inline">Preview route:</span>
+            <code className="rounded-full bg-slate-900 px-3 py-1 font-mono text-[11px] border border-slate-800">
+              /design-preview
+            </code>
+          </div>
+        </div>
+      </header>
+
       <main className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-10">
-        {/* HERO */}
+        {/* HERO PREVIEW */}
         <section className="grid gap-8 md:grid-cols-[1.6fr,1.1fr]">
           <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900/40 to-slate-900/80 p-8">
             <div className="absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_0%_0%,rgba(250,204,21,0.24),transparent_55%),radial-gradient(circle_at_80%_0%,rgba(56,189,248,0.16),transparent_55%)]" />
             <div className="relative space-y-4">
               <p className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-slate-950/70 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-amber-200">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
-                ProPokerTV
+                Live poker entertainment
               </p>
 
               <h1 className="text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
@@ -85,27 +108,25 @@ export default function HomePage() {
 
               <p className="max-w-xl text-sm text-slate-300/90">
                 Entertainment, professionalism and passion for poker — in one universe.
-                Real streams and clips will replace these placeholders as the platform evolves.
+                This preview shows how the hero + content rails can feel once real
+                streams and clips are wired in.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-1">
-                <Link
-                  href="/feed"
-                  className="rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 px-5 py-2 text-xs font-semibold text-slate-950 shadow-[0_0_32px_rgba(245,158,11,0.55)] hover:shadow-[0_0_42px_rgba(245,158,11,0.85)] transition-shadow"
-                >
+                <button className="rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 px-5 py-2 text-xs font-semibold text-slate-950 shadow-[0_0_32px_rgba(245,158,11,0.55)] hover:shadow-[0_0_42px_rgba(245,158,11,0.85)] transition-shadow">
                   Watch highlights
-                </Link>
-                <Link
-                  href="/leaderboard"
-                  className="rounded-full border border-slate-700 bg-slate-900/80 px-5 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-800/60 transition"
-                >
+                </button>
+                <button className="rounded-full border border-slate-700 bg-slate-900/80 px-5 py-2 text-xs font-semibold text-slate-200 hover:bg-slate-800/60 transition">
                   View leaderboard
-                </Link>
+                </button>
+                <span className="text-[11px] text-slate-400">
+                  + placeholder rails further down the page ↓
+                </span>
               </div>
             </div>
           </div>
 
-          {/* LIVE TABLE PREVIEW CARD */}
+          {/* “Live table” placeholder */}
           <div className="flex flex-col gap-4">
             <div className="relative flex-1 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/80">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(251,191,36,0.18),transparent_60%),radial-gradient(circle_at_80%_100%,rgba(59,130,246,0.18),transparent_55%)]" />
@@ -116,7 +137,7 @@ export default function HomePage() {
                   </span>
                   <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] text-emerald-300 border border-emerald-500/40">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Status: placeholder
+                    Status: mock
                   </span>
                 </div>
 
@@ -136,8 +157,10 @@ export default function HomePage() {
             </div>
 
             <div className="rounded-2xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-[11px] text-slate-300">
-              This is the public home page. Content rails below show how highlights and
-              clips can look before real ingestion is wired up.
+              This page is a visual sandbox only. Once you are happy with the layout, we
+              can move these blocks into the real <code className="font-mono text-[10px]">/</code>,{" "}
+              <code className="font-mono text-[10px]">/feed</code> and{" "}
+              <code className="font-mono text-[10px]">/clips</code> routes.
             </div>
           </div>
         </section>
@@ -147,17 +170,17 @@ export default function HomePage() {
           <div className="flex items-baseline justify-between gap-4">
             <div>
               <h2 className="text-sm font-semibold tracking-wide text-slate-100">
-                Highlights
+                Highlights rail
               </h2>
               <p className="text-xs text-slate-400">
                 Wide cards with faux thumbnails – ideal for streams, VODs and hero clips.
               </p>
             </div>
             <Link
-              href="/feed"
+              href="/"
               className="text-[11px] text-amber-300 hover:text-amber-200 underline underline-offset-4"
             >
-              Explore full feed →
+              Use as inspiration for the real home page →
             </Link>
           </div>
 
@@ -205,11 +228,11 @@ export default function HomePage() {
         </section>
 
         {/* CLIPS RAIL */}
-        <section className="space-y-4 pb-10">
+        <section className="space-y-4 pb-8">
           <div className="flex items-baseline justify-between gap-4">
             <div>
               <h2 className="text-sm font-semibold tracking-wide text-slate-100">
-                Clips
+                Clips rail
               </h2>
               <p className="text-xs text-slate-400">
                 Compact vertical cards for TikTok / Shorts style moments.
@@ -219,7 +242,7 @@ export default function HomePage() {
               href="/clips"
               className="text-[11px] text-slate-400 hover:text-slate-200 underline underline-offset-4"
             >
-              View all clips →
+              Future /clips layout →
             </Link>
           </div>
 
@@ -252,7 +275,7 @@ export default function HomePage() {
                   </h3>
                   <p className="text-[11px] text-slate-400">{clip.player}</p>
                   <div className="mt-1 flex items-center justify-between text-[10px] text-slate-500">
-                    <span>{clip.stakes}</span>
+                    <span>Tag: {clip.stakes}</span>
                     <span>⭐ 4.8</span>
                   </div>
                 </div>

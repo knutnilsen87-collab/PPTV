@@ -1,0 +1,6 @@
+2025-11-29T14:52:44.9151680+01:00	[INFO]	Starting admin dashboard upgrade in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T14:52:44.9497883+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T14:52:45.0503455+01:00	[INFO]	Backed up existing admin page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\admin\page.tsx.bak_phase2_20251129_145244
+2025-11-29T14:52:45.4739786+01:00	[INFO]	Admin dashboard page overwritten with Phase 2 implementation
+2025-11-29T14:52:45.4958438+01:00	[INFO]	Admin dashboard upgrade completed
+2025-11-29T14:52:45.5029215+01:00	[INFO]	Log signed successfully

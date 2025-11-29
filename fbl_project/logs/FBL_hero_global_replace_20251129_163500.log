@@ -1,0 +1,11 @@
+2025-11-29T16:35:00.9734737+01:00	[INFO]	Starting global hero text replacement in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T16:35:01.0165182+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T16:35:01.0710485+01:00	[INFO]	Search string: Underholdning, profesjonalitet og lidenskap for poker
+2025-11-29T16:35:01.0749555+01:00	[INFO]	Replace with: Entertainment, professionalism and passion for poker
+2025-11-29T16:35:15.0966188+01:00	[WARN]	Failed to read G:\PPTVGITHBNUB\ProPokerTV_merged\app\creator\[id]\page.tsx: An object at the specified path G:\PPTVGITHBNUB\ProPokerTV_merged\app\creator\[id]\page.tsx does not exist, or has been filtered by the -Include or -Exclude parameter.
+2025-11-29T16:35:15.1024478+01:00	[INFO]	Replaced hero text in G:\PPTVGITHBNUB\ProPokerTV_merged\components\Hero.tsx
+2025-11-29T16:35:15.1320538+01:00	[WARN]	Failed to read G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]\page.tsx: An object at the specified path G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]\page.tsx does not exist, or has been filtered by the -Include or -Exclude parameter.
+2025-11-29T16:35:15.1346347+01:00	[INFO]	Replaced hero text in G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\layout.tsx
+2025-11-29T16:35:15.1489914+01:00	[INFO]	Hero text replaced in 2 file(s)
+2025-11-29T16:35:15.1604640+01:00	[INFO]	Global hero text replacement finished
+2025-11-29T16:35:15.1665047+01:00	[INFO]	Log signed successfully

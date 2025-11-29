@@ -1,0 +1,8 @@
+2025-11-29T14:34:31.5301523+01:00	[INFO]	Starting creator public profile setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T14:34:31.5783437+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T14:34:31.6836573+01:00	[INFO]	Backed up account page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_creator_20251129_143431
+2025-11-29T14:34:32.0300338+01:00	[INFO]	Wrote updated app/account/page.tsx
+2025-11-29T14:34:32.0756099+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\creator\[id]
+2025-11-29T14:34:32.2651922+01:00	[INFO]	Wrote app/creator/[id]/page.tsx
+2025-11-29T14:34:32.2762568+01:00	[INFO]	Creator public profile + updated /account completed
+2025-11-29T14:34:32.2831658+01:00	[INFO]	Log signed successfully

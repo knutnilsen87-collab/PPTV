@@ -1,0 +1,11 @@
+2025-11-29T16:37:25.2194066+01:00	[INFO]	Starting hero suffix fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T16:37:25.2738680+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T16:37:25.3240319+01:00	[INFO]	Search string: i ett univers
+2025-11-29T16:37:25.3275782+01:00	[INFO]	Replace with: in one universe
+2025-11-29T16:37:37.4161075+01:00	[WARN]	Failed to read G:\PPTVGITHBNUB\ProPokerTV_merged\app\creator\[id]\page.tsx: An object at the specified path G:\PPTVGITHBNUB\ProPokerTV_merged\app\creator\[id]\page.tsx does not exist, or has been filtered by the -Include or -Exclude parameter.
+2025-11-29T16:37:37.4198606+01:00	[INFO]	Replaced hero suffix in G:\PPTVGITHBNUB\ProPokerTV_merged\components\Hero.tsx
+2025-11-29T16:37:37.4514929+01:00	[WARN]	Failed to read G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]\page.tsx: An object at the specified path G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]\page.tsx does not exist, or has been filtered by the -Include or -Exclude parameter.
+2025-11-29T16:37:37.4540011+01:00	[INFO]	Replaced hero suffix in G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\layout.tsx
+2025-11-29T16:37:37.4679123+01:00	[INFO]	Hero suffix replaced in 2 file(s)
+2025-11-29T16:37:37.4754260+01:00	[INFO]	Hero suffix fix finished
+2025-11-29T16:37:37.4816307+01:00	[INFO]	Log signed successfully

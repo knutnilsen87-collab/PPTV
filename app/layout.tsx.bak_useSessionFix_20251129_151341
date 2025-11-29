@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { inter } from "./fonts";
-import Navigation from "@/components/Navigation";
+import Navigation from "../src/components/Navigation";
 
 export const metadata: Metadata = {
   title: "ProPokerTV",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="no" className={inter.className}>
+    <html lang="en" className={inter.className}>
       <body className="bg-slate-950 text-white">
         <Navigation />
         <main>{children}</main>
@@ -20,5 +20,3 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
-
-

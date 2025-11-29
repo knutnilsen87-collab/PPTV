@@ -55,7 +55,7 @@ export default async function AccountPage() {
         }).format(createdAt)
       : "Unknown";
 
-  const publicProfileUrl = "/creator/" + user.id;
+  const publicProfileUrl = \/creator/\\;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">

@@ -1,0 +1,9 @@
+2025-11-29T16:36:40.0363566+01:00	[INFO]	Starting global hero text replacement in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T16:36:40.0850673+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T16:36:40.1761589+01:00	[INFO]	Search string: Underholdning, profesjonalitet og lidenskap for poker
+2025-11-29T16:36:40.1800392+01:00	[INFO]	Replace with: Entertainment, professionalism and passion for poker
+2025-11-29T16:36:52.4334396+01:00	[WARN]	Failed to read G:\PPTVGITHBNUB\ProPokerTV_merged\app\creator\[id]\page.tsx: An object at the specified path G:\PPTVGITHBNUB\ProPokerTV_merged\app\creator\[id]\page.tsx does not exist, or has been filtered by the -Include or -Exclude parameter.
+2025-11-29T16:36:52.4659830+01:00	[WARN]	Failed to read G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]\page.tsx: An object at the specified path G:\PPTVGITHBNUB\ProPokerTV_merged\src\app\video\[id]\page.tsx does not exist, or has been filtered by the -Include or -Exclude parameter.
+2025-11-29T16:36:52.4810297+01:00	[WARN]	No files contained the Norwegian hero text – nothing changed
+2025-11-29T16:36:52.4942440+01:00	[INFO]	Global hero text replacement finished
+2025-11-29T16:36:52.5008634+01:00	[INFO]	Log signed successfully

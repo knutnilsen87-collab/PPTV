@@ -1,0 +1,135 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import { authOptions } from "../../lib/auth";
+import { db } from "../../lib/db";
+
+export const dynamic = "force-dynamic";
+
+async function updateAccount(formData: FormData) {
+  "use server";
+
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user?.email) {
+    redirect("/login?callbackUrl=/account");
+  }
+
+  const name = (formData.get("name") ?? "").toString().trim();
+
+  if (!name) {
+    return;
+  }
+
+  await db.user.update({
+    where: { email: session.user!.email! },
+    data: { name },
+  });
+
+  revalidatePath("/account");
+}
+
+export default async function AccountPage() {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user) {
+    redirect("/login?callbackUrl=/account");
+  }
+
+  const user = session.user as any;
+
+  const displayName = user.name ?? "";
+  const email = user.email ?? "no-email@example.com";
+  const role = (user.role as string) ?? "USER";
+
+  return (
+    <main className="min-h-[calc(100vh-64px)] bg-slate-950 text-slate-50">
+      <div className="mx-auto flex max-w-4xl flex-col gap-6 px-4 py-10 lg:px-0">
+        <header>
+          <h1 className="text-3xl font-semibold tracking-tight text-white">
+            Your account
+          </h1>
+          <p className="mt-2 text-sm text-slate-300">
+            Update your public profile and manage how you appear on ProPokerTV.
+          </p>
+        </header>
+
+        <section className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 shadow-[0_0_40px_rgba(15,23,42,0.9)]">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-300">
+            Profile
+          </h2>
+
+          <form
+            action={updateAccount}
+            className="mt-4 grid gap-4 md:grid-cols-2 md:gap-6"
+          >
+            <div className="flex flex-col gap-2">
+              <label
+                className="text-xs font-medium text-slate-300"
+                htmlFor="name"
+              >
+                Display name
+              </label>
+              <input
+                id="name"
+                name="name"
+                defaultValue={displayName}
+                placeholder="Your display name"
+                className="h-9 rounded-lg border border-slate-700 bg-slate-900 px-3 text-sm text-slate-50 outline-none ring-0 focus:border-amber-400 focus:ring-2 focus:ring-amber-500/40"
+              />
+              <p className="text-[11px] text-slate-500">
+                This name will be shown on clips, leaderboards and comments later.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-medium text-slate-300">
+                Email
+              </span>
+              <div className="flex h-9 items-center rounded-lg border border-slate-800 bg-slate-900 px-3 text-sm text-slate-400">
+                {email}
+              </div>
+              <p className="text-[11px] text-slate-500">
+                Email is used for login and security. It can&apos;t be changed here yet.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <span className="text-xs font-medium text-slate-300">
+                Role
+              </span>
+              <p className="inline-flex items-center rounded-full border border-amber-500/60 bg-amber-500/10 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-300">
+                {role}
+              </p>
+              <p className="text-[11px] text-slate-500">
+                Role controls access to creator and admin tools.
+              </p>
+            </div>
+
+            <div className="flex items-end">
+              <button
+                type="submit"
+                className="inline-flex h-9 items-center justify-center rounded-lg border border-amber-500/80 bg-amber-500 px-4 text-xs font-semibold uppercase tracking-[0.18em] text-slate-950 transition hover:bg-amber-400"
+              >
+                Save changes
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-6">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-300">
+            Coming soon
+          </h2>
+          <ul className="mt-3 space-y-2 text-sm text-slate-300">
+            <li>• Editable bio, country and favourite games.</li>
+            <li>• Avatar upload and social links.</li>
+            <li>• Notification preferences and privacy controls.</li>
+            <li>• Overview of your clips, votes and results.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  );
+}
+

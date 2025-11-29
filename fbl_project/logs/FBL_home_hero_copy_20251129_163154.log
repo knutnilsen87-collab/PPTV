@@ -1,0 +1,6 @@
+2025-11-29T16:31:54.5522725+01:00	[INFO]	Starting home hero copy update in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-29T16:31:54.6788259+01:00	[INFO]	Using existing RSA keypair
+2025-11-29T16:31:54.8538731+01:00	[INFO]	Backed up app/page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\page.tsx.bak_hero_20251129_163154
+2025-11-29T16:31:54.9572446+01:00	[WARN]	Norwegian hero text not found in app/page.tsx – no replacement done
+2025-11-29T16:31:54.9728682+01:00	[INFO]	Home hero copy update finished
+2025-11-29T16:31:54.9798629+01:00	[INFO]	Log signed successfully

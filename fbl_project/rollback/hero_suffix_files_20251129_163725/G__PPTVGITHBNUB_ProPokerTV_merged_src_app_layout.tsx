@@ -7,7 +7,7 @@ import Navigation from "@/components/Navigation";
 export const metadata: Metadata = {
   title: "ProPokerTV",
   description:
-    "Entertainment, professionalism and passion for poker — in one universe.",
+    "Entertainment, professionalism and passion for poker — i ett univers.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -20,5 +20,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
-
 

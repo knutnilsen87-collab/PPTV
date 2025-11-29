@@ -1,0 +1,214 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
+import { db } from "@/lib/db";
+
+export const dynamic = "force-dynamic";
+
+export default async function AdminPage() {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user) {
+    redirect("/login?callbackUrl=/admin");
+  }
+
+  // @ts-ignore – we know we added role on the session in auth.ts
+  if (session.user.role !== "ADMIN") {
+    redirect("/");
+  }
+
+  const [userCount, videoCount, voteCount, latestUsers, latestVideos] =
+    await Promise.all([
+      db.user.count(),
+      db.video.count(),
+      db.vote.count(),
+      db.user.findMany({
+        orderBy: { createdAt: "desc" },
+        take: 10,
+        select: {
+          id: true,
+          email: true,
+          name: true,
+          displayName: true,
+          role: true,
+          createdAt: true,
+        },
+      }),
+      db.video.findMany({
+        orderBy: { createdAt: "desc" },
+        take: 10,
+        select: {
+          id: true,
+          title: true,
+          vendor: true,
+          createdAt: true,
+        },
+      }),
+    ]);
+
+  return (
+    <main className="min-h-screen px-6 py-10 bg-slate-950 text-slate-50">
+      <div className="max-w-6xl mx-auto space-y-10">
+        <header className="space-y-2">
+          <p className="text-xs uppercase tracking-[0.3em] text-accent-poker">
+            Admin Control Room
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">
+            ProPokerTV backoffice
+          </h1>
+          <p className="text-sm md:text-base text-slate-400 max-w-2xl">
+            Manage users, content and community features. This is a{" "}
+            <span className="font-medium text-slate-200">
+              placeholder admin panel
+            </span>{" "}
+            – real tools (editing, bans, feature flags) can be wired in here.
+          </p>
+        </header>
+
+        {/* KPI tiles */}
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <p className="text-xs text-slate-400">Registered users</p>
+            <p className="mt-2 text-3xl font-semibold">{userCount}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              Including admins, creators and viewers.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <p className="text-xs text-slate-400">Videos in catalog</p>
+            <p className="mt-2 text-3xl font-semibold">{videoCount}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              Streams, VODs and highlight clips.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <p className="text-xs text-slate-400">Play of the Week votes</p>
+            <p className="mt-2 text-3xl font-semibold">{voteCount}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              Community engagement on hero moments.
+            </p>
+          </div>
+        </section>
+
+        {/* 2-column layout: users + videos */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Users */}
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 md:p-5 space-y-3">
+            <div className="flex items-center justify-between gap-2">
+              <div>
+                <h2 className="text-sm font-semibold">Latest users</h2>
+                <p className="text-xs text-slate-500">
+                  Placeholder list – later you can add search, filters and role
+                  management here.
+                </p>
+              </div>
+              <span className="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300">
+                USERS
+              </span>
+            </div>
+
+            <div className="mt-2 divide-y divide-slate-800 border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+              {latestUsers.length === 0 && (
+                <div className="px-4 py-8 text-center text-xs text-slate-500">
+                  No users yet. Register a new account to populate this list.
+                </div>
+              )}
+
+              {latestUsers.map((user) => (
+                <div
+                  key={user.id}
+                  className="px-4 py-3 flex items-center justify-between gap-3"
+                >
+                  <div className="space-y-0.5">
+                    <p className="text-sm font-medium text-slate-100">
+                      {user.displayName || user.name || "Unnamed user"}
+                    </p>
+                    <p className="text-xs text-slate-400">{user.email}</p>
+                  </div>
+                  <div className="text-right space-y-1">
+                    <span className="inline-flex items-center rounded-full border border-slate-700 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-slate-300">
+                      {user.role}
+                    </span>
+                    <p className="text-[10px] text-slate-500">
+                      Joined:{" "}
+                      {new Date(user.createdAt).toLocaleDateString("en-GB", {
+                        year: "numeric",
+                        month: "short",
+                        day: "2-digit",
+                      })}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Videos */}
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 md:p-5 space-y-3">
+            <div className="flex items-center justify-between gap-2">
+              <div>
+                <h2 className="text-sm font-semibold">Latest videos</h2>
+                <p className="text-xs text-slate-500">
+                  Placeholder overview – later this becomes your content
+                  control center.
+                </p>
+              </div>
+              <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 text-[10px] font-medium text-sky-300">
+                CONTENT
+              </span>
+            </div>
+
+            <div className="mt-2 divide-y divide-slate-800 border border-slate-800 rounded-xl overflow-hidden bg-slate-950/40">
+              {latestVideos.length === 0 && (
+                <div className="px-4 py-8 text-center text-xs text-slate-500">
+                  No videos yet. Once upload / ingest is wired up, they will
+                  appear here.
+                </div>
+              )}
+
+              {latestVideos.map((video) => (
+                <div
+                  key={video.id}
+                  className="px-4 py-3 flex items-center justify-between gap-3"
+                >
+                  <div className="space-y-0.5">
+                    <p className="text-sm font-medium text-slate-100">
+                      {video.title}
+                    </p>
+                    <p className="text-[11px] text-slate-500">
+                      Vendor: {video.vendor}
+                    </p>
+                  </div>
+                  <p className="text-[10px] text-slate-500">
+                    Created:{" "}
+                    {new Date(video.createdAt).toLocaleDateString("en-GB", {
+                      year: "numeric",
+                      month: "short",
+                      day: "2-digit",
+                    })}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Roadmap hint inside admin */}
+        <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 md:p-5">
+          <h2 className="text-sm font-semibold mb-1">What’s next for admins?</h2>
+          <p className="text-xs text-slate-400 mb-3">
+            This panel is a foundation. Upcoming features we can wire in here:
+          </p>
+          <ul className="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+            <li>User role management (upgrade to creator / moderator / admin).</li>
+            <li>Manual curation of “Play of the Week” candidates.</li>
+            <li>Moderation tools for comments, clips and community features.</li>
+            <li>Feature flags and A/B tests for new UX experiments.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  );
+}

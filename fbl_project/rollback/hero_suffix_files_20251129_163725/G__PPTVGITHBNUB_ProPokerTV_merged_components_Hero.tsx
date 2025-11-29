@@ -15,7 +15,7 @@ export default function Hero() {
       </h1>
 
       <p className="max-w-2xl text-balance text-sm text-slate-200/80 sm:text-base">
-        Entertainment, professionalism and passion for poker — in one universe.
+        Entertainment, professionalism and passion for poker — i ett univers.
       </p>
 
       <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
@@ -34,5 +34,4 @@ export default function Hero() {
     </section>
   );
 }
-
 
