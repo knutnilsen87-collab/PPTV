@@ -96,12 +96,7 @@ model Video {
 
   userId       String?
   user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  votes        Vote[]  description     String?
-  videoUrl        String?
-  thumbnailUrl    String?
-  durationSeconds Int? @default(0)
-  tag             String?
-  kind            String?
+  votes        Vote[]
 }
 
 model Vote {
@@ -115,5 +110,4 @@ model Vote {
 
   @@unique([userId, videoId])
 }
-
 

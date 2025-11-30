@@ -1,129 +1,90 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
 
-import { useEffect, useState } from "react";
-import UploadForm from "@/components/UploadForm";
-
-type Author = {
-  id: string;
-  name: string | null;
-} | null;
-
-type Video = {
-  id: string;
-  title: string;
-  description: string | null;
-  url: string;
-  thumbnail: string | null;
-  createdAt: string;
-  author?: Author;
-  votes: number;
-};
-
-type Status = "idle" | "loading" | "error";
+const CLIPS = [
+  {
+    id: 3,
+    title: "Triple barrel bluff for the ages",
+    thumbnail: "/images/thumbnails/amazing-bluff.jpeg",
+    label: "Bluff of the Week",
+    length: "00:43",
+  },
+  {
+    id: 1,
+    title: "Hero call with fourth pair",
+    thumbnail: "/images/thumbnails/video-thumbnail.jpeg",
+    label: "Hero call",
+    length: "00:31",
+  },
+  {
+    id: 2,
+    title: "Three-way all-in preflop explosion",
+    thumbnail: "/images/thumbnails/video-thumbnail.jpeg",
+    label: "Final table",
+    length: "00:52",
+  },
+  {
+    id: 1,
+    title: "River check-raise for stacks",
+    thumbnail: "/images/thumbnails/strategy.jpeg",
+    label: "Cash game",
+    length: "00:35",
+  },
+];
 
 export default function ClipsPage() {
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState<string | null>(null);
-
-  async function loadVideos() {
-    try {
-      setStatus("loading");
-      setError(null);
-
-      const res = await fetch("/api/videos", { cache: "no-store" });
-      if (!res.ok) {
-        throw new Error("Kunne ikke hente videoer");
-      }
-      const data: Video[] = await res.json();
-
-      const sorted = [...data].sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      );
-
-      setVideos(sorted);
-      setStatus("idle");
-    } catch (err: any) {
-      console.error("loadVideos error", err);
-      setError(err.message ?? "Ukjent feil ved henting av videoer.");
-      setStatus("error");
-    }
-  }
-
-  useEffect(() => {
-    loadVideos();
-  }, []);
-
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black px-4 py-16">
-      <section className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row">
-        <div className="w-full lg:w-2/5">
-          <UploadForm onCreated={loadVideos} />
-        </div>
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <div className="max-w-6xl mx-auto px-6 pt-16 pb-20 space-y-8">
+        <header className="space-y-2">
+          <p className="text-[0.65rem] tracking-[0.3em] uppercase text-amber-300">
+            Clips
+          </p>
+          <h1 className="text-2xl md:text-3xl font-semibold">
+            Short, shareable poker moments (placeholder)
+          </h1>
+          <p className="text-sm text-slate-400 max-w-xl">
+            In the full product, this page becomes the hub for fast highlights,
+            social-first cuts and creator clips. For now, it is a visual mock.
+          </p>
+        </header>
 
-        <div className="w-full lg:w-3/5 space-y-4">
-          <header className="space-y-2">
-            <h1 className="text-2xl font-semibold text-white">
-              Klippsenter
-            </h1>
-            <p className="text-sm text-slate-300/80">
-              Last opp nye pokerøyeblikk og se dem i feeden. Disse klippene kan
-              brukes direkte i Play of the Week og andre formater.
-            </p>
-          </header>
-
-          <div className="flex items-center justify-between text-xs text-slate-300/80">
-            <span>
-              {videos.length > 0
-                ? `Viser ${videos.length} klipp`
-                : "Ingen klipp ennå – last opp ditt første klipp."}
-            </span>
-          </div>
-
-          {status === "loading" && (
-            <p className="text-sm text-slate-300/80">Laster klipp...</p>
-          )}
-
-          {error && (
-            <p className="text-sm text-red-400">❌ {error}</p>
-          )}
-
-          <div className="space-y-3">
-            {videos.map((video) => (
-              <article
-                key={video.id}
-                className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-gradient-to-r from-slate-900/80 via-slate-950/90 to-black/90 px-4 py-3"
-              >
-                <div className="min-w-0 space-y-1">
-                  <h2 className="truncate text-sm font-semibold text-white">
-                    {video.title}
-                  </h2>
-                  {video.description && (
-                    <p className="truncate text-xs text-slate-300/80">
-                      {video.description}
-                    </p>
-                  )}
-                  {video.author?.name && (
-                    <p className="text-[11px] text-slate-400">
-                      Opplastet av{" "}
-                      <span className="font-medium text-slate-100">
-                        {video.author.name}
-                      </span>
-                    </p>
-                  )}
+        <div className="grid md:grid-cols-3 gap-5">
+          {CLIPS.map((clip, index) => (
+            <Link
+              key={`${clip.id}-${index}`}
+              href={`/video/${clip.id}`}
+              className="group rounded-2xl border border-slate-800 bg-slate-900/40 overflow-hidden hover:border-amber-400/60 transition-colors"
+            >
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src={clip.thumbnail}
+                  alt={clip.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute top-2 left-2">
+                  <span className="px-2 py-1 rounded-full bg-black/50 text-[0.6rem] uppercase tracking-[0.15em] text-amber-200">
+                    {clip.label}
+                  </span>
                 </div>
-                <a
-                  href={`/video/${video.id}`}
-                  className="text-xs font-medium text-amber-300 hover:text-amber-200"
-                >
-                  Åpne →
-                </a>
-              </article>
-            ))}
-          </div>
+                <div className="absolute bottom-2 left-2 right-2 space-y-1 text-xs">
+                  <p className="font-medium line-clamp-2">{clip.title}</p>
+                  <p className="text-[0.6rem] text-slate-300">
+                    Length: {clip.length} (mock)
+                  </p>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
-      </section>
-    </main>
+
+        <p className="text-[0.7rem] text-slate-500">
+          Product note: these clips could later be auto-generated from full
+          streams, submitted by creators, or voted up from the community.
+        </p>
+      </div>
+    </div>
   );
 }

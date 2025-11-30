@@ -1,0 +1,175 @@
+import Link from "next/link";
+
+type Highlight = {
+  id: number;
+  title: string;
+  player: string;
+  stakes: string;
+  length: string;
+  tag: string;
+  views: string;
+};
+
+const latestHighlights: Highlight[] = [
+  {
+    id: 1,
+    title: "High stakes hero call on the river",
+    player: "Alex 'Ice' Larsen",
+    stakes: "€5/€10 Cash",
+    length: "08:42",
+    tag: "Play of the Week candidate",
+    views: "13.2k views",
+  },
+  {
+    id: 2,
+    title: "Final table: slick three-way all-in",
+    player: "Mia Santos · €215 Main Event",
+    stakes: "Tournament highlight",
+    length: "06:17",
+    tag: "Tournament highlight",
+    views: "9.4k views",
+  },
+  {
+    id: 3,
+    title: "Bluff of the week – triple barrel",
+    player: "Jin Park · €5/€10 Cash",
+    stakes: "Cash game highlight",
+    length: "04:39",
+    tag: "Bluff of the Week",
+    views: "7.8k views",
+  },
+];
+
+const clipRail: Highlight[] = [
+  {
+    id: 4,
+    title: "Snap call with pocket deuces",
+    player: "Nova",
+    stakes: "Tag: Clips",
+    length: "00:27",
+    tag: "Clip",
+    views: "Preview only",
+  },
+  {
+    id: 5,
+    title: "Running it twice vs the reg",
+    player: "GrinderX",
+    stakes: "Tag: Clips",
+    length: "00:53",
+    tag: "Clip",
+    views: "Preview only",
+  },
+  {
+    id: 6,
+    title: "Streamer cooler – set over set",
+    player: "StreamLab",
+    stakes: "Tag: Clips",
+    length: "01:12",
+    tag: "Clip",
+    views: "Preview only",
+  },
+];
+
+function HighlightCard({ item, variant }: { item: Highlight; variant?: "wide" | "default" }) {
+  const wide = variant === "wide";
+  return (
+    <article className={`relative overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 via-slate-900/40 to-slate-900/80 p-4 sm:p-5 shadow-lg shadow-black/40 ${wide ? "col-span-2" : ""}`}>
+      {/* Fake thumbnail / preview frame */}
+      <div className="mb-4 h-28 w-full rounded-xl bg-[radial-gradient(circle_at_0%_0%,#22c55e_0,transparent_35%),radial-gradient(circle_at_100%_0%,#facc15_0,transparent_40%),radial-gradient(circle_at_50%_100%,#6366f1_0,transparent_45%)] opacity-80" />
+
+      <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[0.16em] text-slate-400">
+        <span className="inline-flex items-center gap-2">
+          <span className="inline-flex h-6 items-center rounded-full border border-slate-700/70 bg-slate-900/70 px-2">
+            {item.tag}
+          </span>
+        </span>
+        <span className="inline-flex items-center gap-1 text-[10px] text-slate-500">
+          <span className="inline-flex h-6 items-center rounded-full border border-slate-700/70 bg-slate-900/70 px-2">
+            {item.length}
+          </span>
+        </span>
+      </div>
+
+      <h3 className="mb-1 text-sm font-semibold text-slate-50 sm:text-base">
+        {item.title}
+      </h3>
+      <p className="mb-1 text-xs text-slate-400">{item.player}</p>
+      <p className="mb-4 text-[11px] text-slate-500">{item.stakes}</p>
+
+      <div className="flex items-center justify-between text-[11px] text-slate-500">
+        <span>{item.views}</span>
+        <div className="flex gap-2">
+          <button className="rounded-full border border-slate-700/80 bg-slate-900/60 px-3 py-1 text-[11px] font-medium text-slate-200 hover:border-slate-500 hover:bg-slate-800/80">
+            Open placeholder player
+          </button>
+          <Link
+            href="/design-preview"
+            className="rounded-full border border-amber-400/70 bg-amber-500/10 px-3 py-1 text-[11px] font-semibold text-amber-300 hover:border-amber-300 hover:bg-amber-400/20"
+          >
+            Open design preview
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default function FeedPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <main className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-24 pt-10 sm:px-6 lg:px-8">
+        <header className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-300">
+            Feed
+          </p>
+          <h1 className="text-2xl font-semibold sm:text-3xl">
+            Highlights & clips from across ProPokerTV
+          </h1>
+          <p className="max-w-2xl text-sm text-slate-400">
+            This is a mock feed. Later we can wire these blocks to real streams, VODs and short-form clips.
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+            <span className="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/80 px-2 py-1">
+              Phase 2 – Layout preview
+            </span>
+            <span>Design only – not real data yet.</span>
+          </div>
+        </header>
+
+        {/* Latest highlights */}
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="text-sm font-semibold text-slate-100">Latest highlights</h2>
+            <p className="text-[11px] text-slate-500">
+              Wide hero cards – ideal for streams, VODs and hero moments.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {latestHighlights.map((item, idx) => (
+              <HighlightCard
+                key={item.id}
+                item={item}
+                variant={idx === 2 ? "wide" : "default"}
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Clips rail */}
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="text-sm font-semibold text-slate-100">From the clips rail</h2>
+            <p className="text-[11px] text-slate-500">
+              Horizontal cards that map to the vertical layout used on /clips.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {clipRail.map((item) => (
+              <HighlightCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}

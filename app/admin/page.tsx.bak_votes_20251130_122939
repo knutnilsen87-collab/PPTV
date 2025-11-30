@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  const [userCount, videoCount, voteCount, latestUsers, latestVideos, latestVotes] =
+  const [userCount, videoCount, voteCount, latestUsers, latestVideos] =
     await Promise.all([
       db.user.count().catch(() => 0),
       db.video.count().catch(() => 0),
@@ -33,39 +33,11 @@ export default async function AdminPage() {
           },
         })
         .catch(() => []),
-      db.vote
-        .findMany({
-          orderBy: { createdAt: "desc" },
-          take: 10,
-          select: {
-            id: true,
-            createdAt: true,
-            video: {
-              select: {
-                id: true,
-                title: true,
-              },
-            },
-            user: {
-              select: {
-                id: true,
-                email: true,
-                name: true,
-              },
-            },
-          },
-        })
-        .catch(() => []),
     ]);
 
   const fmt = (n: number) => new Intl.NumberFormat("en-US").format(n);
-  const fmtDateTime = (d: Date | string | null | undefined) =>
-    d
-      ? new Intl.DateTimeFormat("en-GB", {
-          dateStyle: "medium",
-          timeStyle: "short",
-        }).format(new Date(d))
-      : "Unknown";
+  const fmtDate = (d: Date | string | null | undefined) =>
+    d ? new Intl.DateTimeFormat("en-GB", { dateStyle: "medium" }).format(new Date(d)) : "Unknown";
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
@@ -141,7 +113,7 @@ export default async function AdminPage() {
                     </p>
                   </div>
                   <p className="text-[0.65rem] text-slate-500">
-                    {fmtDateTime(user.createdAt)}
+                    {fmtDate(user.createdAt)}
                   </p>
                 </div>
               ))}
@@ -176,47 +148,11 @@ export default async function AdminPage() {
                     </p>
                   </div>
                   <p className="text-[0.65rem] text-slate-500">
-                    {fmtDateTime(video.createdAt)}
+                    {fmtDate(video.createdAt)}
                   </p>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Recent votes */}
-        <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-3">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold">Recent votes</h2>
-            <span className="text-[0.7rem] text-slate-500">
-              Last {latestVotes.length} events
-            </span>
-          </div>
-          <div className="divide-y divide-slate-800 text-sm">
-            {latestVotes.length === 0 && (
-              <p className="text-xs text-slate-500 py-2">
-                No votes have been recorded yet. Try casting a vote on
-                Play of the Week to see events appear here.
-              </p>
-            )}
-            {latestVotes.map((vote) => (
-              <div
-                key={vote.id}
-                className="py-2 flex items-center justify-between gap-4"
-              >
-                <div className="space-y-0.5">
-                  <p className="font-medium text-xs line-clamp-1">
-                    {vote.video?.title ?? "Unknown video"}
-                  </p>
-                  <p className="text-[0.7rem] text-slate-400">
-                    {vote.user?.email ?? vote.user?.name ?? "Unknown user"}
-                  </p>
-                </div>
-                <p className="text-[0.65rem] text-slate-500">
-                  {fmtDateTime(vote.createdAt)}
-                </p>
-              </div>
-            ))}
           </div>
         </section>
 

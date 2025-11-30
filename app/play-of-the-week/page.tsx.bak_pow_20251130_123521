@@ -1,0 +1,127 @@
+import Link from "next/link";
+import { db } from "@/lib/db";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import VoteButton from "./VoteButton";
+
+export const dynamic = "force-dynamic";
+
+export default async function PlayOfTheWeekPage() {
+  const session = await getServerSession(authOptions);
+  const userId = (session as any)?.user?.id as string | undefined;
+
+  const [videos, userVotes] = await Promise.all([
+    db.video.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 6,
+      include: {
+        _count: {
+          select: { votes: true },
+        },
+      },
+    }),
+    userId
+      ? db.vote.findMany({
+          where: { userId },
+          select: { videoId: true },
+        })
+      : Promise.resolve([]),
+  ]);
+
+  const votedSet = new Set(userVotes.map((v) => v.videoId));
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <div className="max-w-6xl mx-auto px-6 pt-16 pb-20 space-y-8">
+        <header className="space-y-3">
+          <p className="text-[0.65rem] tracking-[0.3em] uppercase text-amber-300">
+            Community feature
+          </p>
+          <h1 className="text-2xl md:text-3xl font-semibold">
+            Play of the Week
+          </h1>
+          <p className="text-sm text-slate-400 max-w-2xl">
+            Every week, the community helps surface the most entertaining
+            hands. These entries are mock data for now, wired up to a real
+            voting backend so we can test the experience.
+          </p>
+          {!session && (
+            <p className="text-[0.7rem] text-slate-500">
+              You&apos;re browsing as a guest.{" "}
+              <Link
+                href="/login?callbackUrl=/play-of-the-week"
+                className="text-amber-300 underline underline-offset-4"
+              >
+                Log in
+              </Link>{" "}
+              to cast a vote.
+            </p>
+          )}
+        </header>
+
+        <section className="grid md:grid-cols-3 gap-5">
+          {videos.length === 0 && (
+            <div className="col-span-3 text-sm text-slate-400 border border-dashed border-slate-800 rounded-2xl p-6 text-center">
+              No videos found yet. Once you start importing or uploading
+              content, candidates for Play of the Week will appear here.
+            </div>
+          )}
+
+          {videos.map((video) => {
+            const votes = (video as any)._count?.votes ?? 0;
+            const hasVoted = userId ? votedSet.has(video.id) : false;
+
+            return (
+              <div
+                key={video.id}
+                className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900/60 overflow-hidden"
+              >
+                <div className="aspect-video bg-slate-900 flex items-center justify-center text-xs text-slate-500">
+                  Video placeholder
+                </div>
+                <div className="p-4 flex-1 flex flex-col gap-3">
+                  <div className="space-y-1">
+                    <p className="text-[0.65rem] uppercase tracking-[0.25em] text-amber-300">
+                      Candidate hand
+                    </p>
+                    <h2 className="text-sm font-semibold line-clamp-2">
+                      {video.title || "Untitled hand"}
+                    </h2>
+                  </div>
+
+                  <div className="flex items-center justify-between text-[0.75rem] text-slate-400">
+                    <span>Votes: {votes}</span>
+                    <Link
+                      href={`/video/${video.id}`}
+                      className="underline underline-offset-4 hover:text-slate-200"
+                    >
+                      Open video
+                    </Link>
+                  </div>
+
+                  <div className="mt-auto pt-2">
+                    <VoteButton
+                      videoId={video.id}
+                      initialVotes={votes}
+                      initiallyVoted={!!hasVoted}
+                      disabledReason={
+                        !session ? "Sign in to vote" : undefined
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </section>
+
+        <section className="text-[0.7rem] text-slate-500 border-t border-slate-800 pt-4">
+          <p>
+            Product note: later, this page can show multiple categories (best
+            bluff, hero call, craziest cooler) and time-boxed voting windows.
+          </p>
+        </section>
+      </div>
+    </div>
+  );
+}

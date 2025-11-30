@@ -1,0 +1,113 @@
+import Link from "next/link";
+
+type Clip = {
+  id: number;
+  title: string;
+  creator: string;
+  length: string;
+  tag: string;
+  views: string;
+};
+
+const clips: Clip[] = [
+  {
+    id: 1,
+    title: "Heat check with pocket queens",
+    creator: "Nova",
+    length: "00:31",
+    tag: "Tag: Clips",
+    views: "Preview only",
+  },
+  {
+    id: 2,
+    title: "River bluff gets snapped off",
+    creator: "GrinderX",
+    length: "00:22",
+    tag: "Tag: Clips",
+    views: "Preview only",
+  },
+  {
+    id: 3,
+    title: "Sick slowroll? You decide.",
+    creator: "StreamLab",
+    length: "00:45",
+    tag: "Tag: Clips",
+    views: "Preview only",
+  },
+  {
+    id: 4,
+    title: "Hero fold in a 4-bet pot",
+    creator: "Nova",
+    length: "00:37",
+    tag: "Tag: Clips",
+    views: "Preview only",
+  },
+];
+
+function ClipCard({ clip }: { clip: Clip }) {
+  return (
+    <article className="flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900/80 via-slate-900/40 to-slate-950 p-3 shadow-lg shadow-black/40">
+      {/* Vertical thumbnail placeholder */}
+      <div className="mb-3 aspect-[9/16] w-full rounded-xl bg-[radial-gradient(circle_at_0%_0%,#22c55e_0,transparent_35%),radial-gradient(circle_at_100%_0%,#f97316_0,transparent_40%),radial-gradient(circle_at_50%_100%,#6366f1_0,transparent_45%)] opacity-90" />
+
+      <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[0.16em] text-slate-400">
+        <span className="inline-flex h-6 items-center rounded-full border border-slate-700/70 bg-slate-900/70 px-2">
+          Clip
+        </span>
+        <span className="inline-flex h-6 items-center rounded-full border border-slate-700/70 bg-slate-900/70 px-2">
+          {clip.length}
+        </span>
+      </div>
+
+      <h3 className="mb-1 text-sm font-semibold text-slate-50">{clip.title}</h3>
+      <p className="mb-1 text-xs text-slate-400">{clip.creator}</p>
+      <p className="mb-4 text-[11px] text-slate-500">{clip.tag}</p>
+
+      <div className="mt-auto flex items-center justify-between text-[11px] text-slate-500">
+        <span>{clip.views}</span>
+        <Link
+          href="/design-preview"
+          className="rounded-full border border-amber-400/70 bg-amber-500/10 px-3 py-1 text-[11px] font-semibold text-amber-300 hover:border-amber-300 hover:bg-amber-400/20"
+        >
+          Open design preview
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+export default function ClipsPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <main className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-24 pt-10 sm:px-6 lg:px-8">
+        <header className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-300">
+            Clips
+          </p>
+          <h1 className="text-2xl font-semibold sm:text-3xl">
+            Vertical highlights & short-form moments
+          </h1>
+          <p className="max-w-2xl text-sm text-slate-400">
+            This page is wired to mock clips. In a later phase, these cards can connect to
+            real TikTok/Shorts-style videos from your creators.
+          </p>
+        </header>
+
+        <section className="space-y-4">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="text-sm font-semibold text-slate-100">From the clips rail</h2>
+            <p className="text-[11px] text-slate-500">
+              Vertical cards – the same format we preview on /feed.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {clips.map((clip) => (
+              <ClipCard key={clip.id} clip={clip} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}

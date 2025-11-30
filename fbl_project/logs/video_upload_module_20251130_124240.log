@@ -1,0 +1,12 @@
+2025-11-30T12:42:40.9058375+01:00	=== Starting video upload module setup ===
+2025-11-30T12:42:40.9482252+01:00	Found prisma schema at G:\PPTVGITHBNUB\ProPokerTV_merged\prisma\schema.prisma
+2025-11-30T12:42:41.0029629+01:00	Backed up schema.prisma to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\schema.prisma.bak_upload_20251130_124240
+2025-11-30T12:42:41.0719891+01:00	Injecting upload fields into Video model
+2025-11-30T12:42:41.0790895+01:00	schema.prisma updated with upload fields on Video
+2025-11-30T12:42:41.1029264+01:00	Running: pnpm prisma migrate dev --name add_video_upload_fields
+2025-11-30T12:42:42.5267201+01:00	prisma migrate dev completed
+2025-11-30T12:42:42.5410875+01:00	Running: pnpm prisma generate
+2025-11-30T12:42:43.6692390+01:00	prisma generate completed
+2025-11-30T12:42:43.7704302+01:00	Wrote API route: G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\videos\upload\route.ts
+2025-11-30T12:42:44.3439548+01:00	Wrote upload page: G:\PPTVGITHBNUB\ProPokerTV_merged\app\upload\page.tsx
+2025-11-30T12:42:44.3576240+01:00	=== Video upload module setup finished successfully ===

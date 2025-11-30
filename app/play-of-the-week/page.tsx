@@ -1,212 +1,139 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
-type Author = {
-  id: string;
-  name: string | null;
-} | null;
-
-type Video = {
-  id: string;
+type PowCandidate = {
+  id: number;
   title: string;
-  description: string | null;
-  url: string;
-  thumbnail: string | null;
-  createdAt: string;
-  author?: Author;
-  votes: number;
+  player: string;
+  stakes: string;
+  length: string;
+  views: string;
+  tag: string;
 };
 
-type Status = "idle" | "loading" | "error";
+const powCandidates: PowCandidate[] = [
+  {
+    id: 1,
+    title: "High stakes hero call on the river",
+    player: 'Alex "Ice" Larsen',
+    stakes: "€5/€10 Cash",
+    length: "08:42",
+    views: "13.2k views",
+    tag: "Play of the Week candidate",
+  },
+  {
+    id: 2,
+    title: "Final table: sick three-way all-in",
+    player: "Mia Santos · €215 Main Event",
+    stakes: "Tournament highlight",
+    length: "06:17",
+    views: "9.4k views",
+    tag: "Tournament highlight",
+  },
+  {
+    id: 3,
+    title: "Bluff of the week – triple barrel",
+    player: "Jin Park · €5/€10 Cash",
+    stakes: "Cash game highlight",
+    length: "04:39",
+    views: "7.8k views",
+    tag: "Bluff of the Week",
+  },
+];
 
 export default function PlayOfTheWeekPage() {
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [status, setStatus] = useState<Status>("idle");
-  const [votingId, setVotingId] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  async function loadVideos() {
-    try {
-      setStatus("loading");
-      setError(null);
-
-      const res = await fetch("/api/videos", { cache: "no-store" });
-      if (!res.ok) {
-        throw new Error("Kunne ikke hente videoer");
-      }
-      const data: Video[] = await res.json();
-
-      const sorted = [...data].sort((a, b) => {
-        if (b.votes !== a.votes) return b.votes - a.votes;
-        return (
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        );
-      });
-
-      setVideos(sorted);
-      setStatus("idle");
-    } catch (err: any) {
-      console.error("loadVideos error", err);
-      setError(err.message ?? "Ukjent feil ved henting av videoer.");
-      setStatus("error");
-    }
-  }
-
-  useEffect(() => {
-    loadVideos();
-  }, []);
-
-  async function handleVote(videoId: string) {
-    try {
-      setVotingId(videoId);
-      setError(null);
-
-      const res = await fetch("/api/votes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ videoId }),
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        throw new Error(data.error || "Kunne ikke registrere stemme.");
-      }
-
-      const votes = data.votes as number | undefined;
-
-      setVideos((prev) =>
-        prev
-          .map((v) =>
-            v.id === videoId && typeof votes === "number"
-              ? { ...v, votes }
-              : v
-          )
-          .sort((a, b) => {
-            if (b.votes !== a.votes) return b.votes - a.votes;
-            return (
-              new Date(b.createdAt).getTime() -
-              new Date(a.createdAt).getTime()
-            );
-          })
-      );
-    } catch (err: any) {
-      console.error("vote error", err);
-      setError(err.message ?? "Ukjent feil ved stemming.");
-    } finally {
-      setVotingId(null);
-    }
-  }
-
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black px-4 py-16">
-      <section className="mx-auto flex max-w-5xl flex-col gap-6">
-        <header className="space-y-2 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300/80">
+    <main className="min-h-screen bg-slate-950 text-slate-50">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-24 pt-16">
+        <section className="space-y-2">
+          <p className="text-xs font-semibold tracking-[0.18em] text-accent-gold uppercase">
+            Community feature
+          </p>
+          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
             Play of the Week
-          </p>
-          <h1 className="text-balance text-3xl font-semibold text-white sm:text-4xl">
-            Stem frem ukens mest legendariske poker-øyeblikk
           </h1>
-          <p className="text-sm text-slate-300/80">
-            Se de beste klippene fra ProPokerTV og gi stemmen din til hånden
-            som fortjener å bli kronet til ukens play.
+          <p className="max-w-2xl text-sm text-slate-300">
+            Every week, the community helps surface the most entertaining hands.
+            These entries are mock data for now, wired up to a real voting
+            backend so we can test the experience later.
           </p>
-        </header>
+        </section>
 
-        <div className="mt-6 flex items-center justify-between gap-4 text-xs text-slate-300/80">
-          <span>
-            {videos.length > 0
-              ? `Viser ${videos.length} kandidater`
-              : "Ingen klipp ennå – last opp et klipp for å starte leaderboardet."}
-          </span>
-          <Link
-            href="/clips"
-            className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-slate-100 hover:bg-white/10"
-          >
-            Gå til klippsenteret
-          </Link>
-        </div>
+        <section className="space-y-4">
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-xs font-medium tracking-[0.18em] text-slate-400 uppercase">
+              Current candidates
+            </p>
+            <p className="text-[11px] text-slate-500">
+              Preview layout only – buttons open the design preview page.
+            </p>
+          </div>
 
-        {status === "loading" && (
-          <p className="mt-4 text-sm text-slate-300/80">
-            Laster inn kandidater...
-          </p>
-        )}
-
-        {error && (
-          <p className="mt-4 text-sm text-red-400">
-            ❌ {error}
-          </p>
-        )}
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {videos.map((video, index) => (
-            <article
-              key={video.id}
-              className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-gradient-to-b from-slate-900/80 via-slate-950/90 to-black/90 p-4 shadow-lg shadow-black/40"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-1 text-[11px] font-medium text-amber-300">
-                    <span className="text-xs">#{index + 1}</span>
-                    <span>Candidate</span>
+          <div className="grid gap-6 md:grid-cols-3">
+            {powCandidates.map((clip) => (
+              <article
+                key={clip.id}
+                className="flex flex-col rounded-3xl border border-white/5 bg-gradient-to-b from-slate-900/80 to-slate-950/90 p-4 shadow-[0_18px_40px_rgba(0,0,0,0.7)]"
+              >
+                <div className="mb-4 h-40 w-full rounded-2xl bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 px-4 py-3 text-xs text-slate-300">
+                  <div className="mb-2 flex items-center justify-between text-[11px] text-slate-400">
+                    <span>Live table / replay frame placeholder</span>
+                    <span className="rounded-full border border-slate-700 px-2 py-0.5 text-[10px] uppercase tracking-[0.16em]">
+                      Preview
+                    </span>
                   </div>
-                  <span className="text-[11px] text-slate-400">
-                    {new Date(video.createdAt).toLocaleDateString("no-NO", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "2-digit",
-                    })}
-                  </span>
+                  <p className="text-[11px] text-slate-500">
+                    Later this area becomes the actual video frame for the
+                    selected hand (VOD or short-form highlight).
+                  </p>
                 </div>
 
-                <h2 className="text-balance text-lg font-semibold text-white">
-                  {video.title}
-                </h2>
-                {video.description && (
-                  <p className="text-sm text-slate-300/80 line-clamp-3">
-                    {video.description}
-                  </p>
-                )}
-
-                {video.author?.name && (
-                  <p className="text-xs text-slate-400">
-                    Opplastet av{" "}
-                    <span className="font-medium text-slate-100">
-                      {video.author.name}
-                    </span>
-                  </p>
-                )}
-              </div>
-
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <button
-                  onClick={() => handleVote(video.id)}
-                  disabled={votingId === video.id}
-                  className="inline-flex items-center gap-2 rounded-full border border-amber-400/60 bg-amber-500/90 px-4 py-2 text-xs font-semibold text-black shadow shadow-amber-500/40 hover:bg-amber-400 disabled:cursor-wait disabled:opacity-70"
-                >
-                  {votingId === video.id ? "Registrerer stemme..." : "Gi stemme"}
-                  <span className="rounded-full bg-black/20 px-2 py-0.5 text-[11px]">
-                    {video.votes}
+                <div className="flex items-center justify-between text-[11px] text-slate-400">
+                  <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 font-medium text-amber-300 uppercase tracking-[0.16em]">
+                    Highlight
                   </span>
-                </button>
+                  <span>{clip.length}</span>
+                </div>
 
-                <Link
-                  href={`/video/${video.id}`}
-                  className="text-xs text-amber-300 hover:text-amber-200"
-                >
-                  Se klippet →
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+                <div className="mt-3 space-y-1">
+                  <h2 className="text-sm font-semibold leading-snug text-slate-50">
+                    {clip.title}
+                  </h2>
+                  <p className="text-xs text-slate-300">{clip.player}</p>
+                  <p className="text-[11px] text-slate-400">{clip.tag}</p>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between text-[11px] text-slate-400">
+                  <span>{clip.views}</span>
+                  <span className="text-slate-500">Preview only</span>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between gap-3">
+                  <p className="text-[11px] text-slate-500">
+                    Watch button opens the mock player in{" "}
+                    <span className="underline">/design-preview</span>.
+                  </p>
+                  <Link
+                    href={`/design-preview?from=pow&id=${clip.id}`}
+                    className="whitespace-nowrap rounded-full border border-amber-400/70 bg-amber-400/10 px-4 py-1.5 text-xs font-semibold text-amber-300 transition hover:bg-amber-400 hover:text-slate-950"
+                  >
+                    Watch clip (mock)
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-6 border-t border-slate-800 pt-6 text-[11px] text-slate-500">
+          <p>
+            Product note: later, this page can show multiple categories (best
+            bluff, hero call, craziest cooler) and time-boxed voting windows
+            with leaderboard integration.
+          </p>
+        </section>
+      </div>
     </main>
   );
 }

@@ -1,0 +1,149 @@
+"use client";
+
+import Link from "next/link";
+
+type FeatureHighlight = {
+  id: number;
+  title: string;
+  player: string;
+  stakes: string;
+  length: string;
+  tag: string;
+  views: string;
+};
+
+const featureHighlights: FeatureHighlight[] = [
+  {
+    id: 1,
+    title: "High stakes hero call on the river",
+    player: "Alex 'Ice' Larsen",
+    stakes: "$5 / $10 Cash",
+    length: "08:42",
+    tag: "Play of the Week candidate",
+    views: "13.2k views",
+  },
+  {
+    id: 2,
+    title: "Final table: slick three-way all-in",
+    player: "Mia Santos – $215 Main Event",
+    stakes: "Tournament highlight",
+    length: "06:17",
+    tag: "Sunday Special",
+    views: "9.4k views",
+  },
+  {
+    id: 3,
+    title: "Bluff of the week – triple barrel",
+    player: "Jin Park vs. CEWS Cash",
+    stakes: "$2 / $5 Cash",
+    length: "04:39",
+    tag: "Bluff of the Week",
+    views: "7.8k views",
+  },
+];
+
+function HighlightCard({ item }: { item: FeatureHighlight }) {
+  return (
+    <article className="flex flex-col gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/60 p-4 shadow-[0_0_40px_rgba(15,23,42,0.8)]">
+      {/* Fake thumbnail */}
+      <div className="h-28 rounded-xl border border-slate-700 bg-gradient-to-br from-emerald-500/25 via-sky-500/20 to-indigo-500/25 flex items-center justify-center text-[11px] tracking-[0.2em] uppercase text-slate-100/80">
+        Thumbnail placeholder
+      </div>
+
+      <div className="flex items-center justify-between text-[11px] text-slate-400">
+        <span>{item.length}</span>
+        <span className="rounded-full border border-amber-400/60 bg-amber-400/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-amber-100">
+          Highlight
+        </span>
+      </div>
+
+      <div className="space-y-1">
+        <h3 className="text-sm font-semibold text-slate-50">
+          {item.title}
+        </h3>
+        <p className="text-[12px] text-slate-300">
+          {item.player}
+        </p>
+        <p className="text-[11px] text-slate-400">{item.stakes}</p>
+      </div>
+
+      <div className="mt-2 flex items-center justify-between text-[11px] text-slate-400">
+        <span>{item.tag}</span>
+        <span>{item.views}</span>
+      </div>
+
+      <div className="mt-3 flex items-center justify-between">
+        <span className="text-[11px] text-slate-500">Preview only</span>
+        <Link
+          href="/design-preview"
+          className="rounded-full bg-amber-400 px-3 py-1 text-[11px] font-semibold text-slate-900 hover:bg-amber-300 transition"
+        >
+          Open design preview
+        </Link>
+      </div>
+    </article>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-50">
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-6 pt-24 pb-24">
+        <div className="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1 text-[11px] tracking-[0.2em] uppercase text-amber-100 mb-6">
+          ProPokerTV
+        </div>
+
+        <h1 className="text-center text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight">
+          <span className="block">Claim your seat</span>
+          <span className="block">at the table</span>
+        </h1>
+
+        <p className="mt-4 max-w-xl text-center text-sm text-slate-300">
+          Entertainment, professionalism and passion for poker — in one
+          universe. Watch curated highlights, live streams and the best
+          community clips from across ProPokerTV.
+        </p>
+
+        <div className="mt-8 flex gap-4">
+          <button className="rounded-full bg-amber-400 px-6 py-2 text-sm font-semibold text-slate-950 shadow-[0_0_40px_rgba(250,204,21,0.6)] hover:bg-amber-300 transition">
+            Watch highlights
+          </button>
+          <button className="rounded-full border border-slate-700 px-6 py-2 text-sm font-semibold text-slate-50 hover:bg-slate-800/70 transition">
+            View leaderboard
+          </button>
+        </div>
+
+        {/* Highlights preview rail */}
+        <section className="mt-16 w-full max-w-5xl">
+          <div className="mb-4 flex items-center justify-between">
+            <div>
+              <h2 className="text-sm font-semibold tracking-[0.18em] text-slate-400 uppercase">
+                Highlights preview
+              </h2>
+              <p className="mt-1 text-[13px] text-slate-400">
+                Mock data so you can see the layout before real videos are wired in.
+              </p>
+            </div>
+            <Link
+              href="/design-preview"
+              className="text-[12px] text-amber-300 hover:text-amber-200 underline-offset-4 hover:underline"
+            >
+              Open full layout sandbox
+            </Link>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {featureHighlights.map((item) => (
+              <HighlightCard key={item.id} item={item} />
+            ))}
+          </div>
+
+          <p className="mt-4 text-[11px] text-slate-500">
+            Later these cards can be powered by your real highlight feed from the
+            database or a content API.
+          </p>
+        </section>
+      </div>
+    </main>
+  );
+}

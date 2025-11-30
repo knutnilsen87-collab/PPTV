@@ -1,0 +1,88 @@
+import Image from "next/image";
+import Link from "next/link";
+
+const POW_CANDIDATES = [
+  {
+    id: 1,
+    title: "High stakes hero call on the river",
+    player: 'Alex "Ice" Larsen',
+    thumbnail: "/images/thumbnails/high-stakes.jpeg",
+    stakes: "€5/€10 Cash",
+  },
+  {
+    id: 2,
+    title: "Final table: slick three-way all-in",
+    player: "Mia Santos",
+    thumbnail: "/images/thumbnails/wsop-main.jpeg",
+    stakes: "€215 Main Event",
+  },
+  {
+    id: 3,
+    title: "Bluff of the week – triple barrel",
+    player: "Jin Park",
+    thumbnail: "/images/thumbnails/amazing-bluff.jpeg",
+    stakes: "€5/€10 Cash",
+  },
+];
+
+export default function PlayOfTheWeekPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <div className="max-w-6xl mx-auto px-6 pt-16 pb-20 space-y-8">
+        <header className="space-y-3">
+          <p className="text-[0.65rem] tracking-[0.3em] uppercase text-amber-300">
+            Play of the Week
+          </p>
+          <h1 className="text-2xl md:text-3xl font-semibold">
+            Vote for the sickest hand of the week (placeholder edition)
+          </h1>
+          <p className="text-sm text-slate-400 max-w-xl">
+            This is a design mock. In the real experience, viewers can upvote,
+            comment and unlock breakdowns for the most insane hands of the week.
+          </p>
+        </header>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {POW_CANDIDATES.map((hand) => (
+            <div
+              key={hand.id}
+              className="group rounded-2xl border border-slate-800 bg-slate-900/40 overflow-hidden flex flex-col"
+            >
+              <Link href={`/video/${hand.id}`} className="relative aspect-video block">
+                <Image
+                  src={hand.thumbnail}
+                  alt={hand.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-2 left-3 right-3 space-y-1 text-xs">
+                  <p className="text-[0.6rem] uppercase tracking-[0.25em] text-slate-300">
+                    Candidate #{hand.id}
+                  </p>
+                  <p className="font-medium line-clamp-2">{hand.title}</p>
+                  <p className="text-[0.6rem] text-slate-300">
+                    {hand.player} • {hand.stakes}
+                  </p>
+                </div>
+              </Link>
+              <div className="px-3 py-3 flex items-center justify-between text-[0.7rem]">
+                <button className="px-3 py-1.5 rounded-full bg-amber-400 text-slate-950 font-semibold text-[0.7rem] hover:bg-amber-300">
+                  Vote (mock)
+                </button>
+                <span className="text-slate-500 text-[0.65rem]">
+                  Voting UI only – backend not wired yet.
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-[0.7rem] text-slate-500">
+          Product note: these candidates could later be driven by real view
+          counts, admin curation, or automatic “clip of the week” logic.
+        </p>
+      </div>
+    </div>
+  );
+}
