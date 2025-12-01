@@ -1,0 +1,6 @@
+2025-11-30T22:42:27.1387339+01:00	[INFO]	Starting Full Upload UI Phase 2
+2025-11-30T22:42:27.1888340+01:00	[INFO]	Backed up existing upload page
+2025-11-30T22:42:27.3043436+01:00	[INFO]	Wrote new upload page with drag-drop + progress bar
+2025-11-30T22:42:27.3493839+01:00	[INFO]	Using existing RSA keypair
+2025-11-30T22:42:27.3865281+01:00	[INFO]	Full Upload UI Phase 2 complete
+2025-11-30T22:42:27.4188666+01:00	[INFO]	Log signed successfully

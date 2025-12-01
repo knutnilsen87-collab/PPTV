@@ -1,0 +1,143 @@
+import UploadForm from "../../components/UploadForm";
+
+type PlaceholderClip = {
+  id: number;
+  title: string;
+  player: string;
+  stakes: string;
+  length: string;
+};
+
+const placeholderClips: PlaceholderClip[] = [
+  {
+    id: 1,
+    title: "High stakes hero call on the river",
+    player: "Alex Ice Larsen",
+    stakes: "€5/€10 Cash",
+    length: "08:42",
+  },
+  {
+    id: 2,
+    title: "Final-table triple barrel bluff",
+    player: "Maria Sharp",
+    stakes: "$1k Tournament",
+    length: "05:19",
+  },
+  {
+    id: 3,
+    title: "Sick cooler in a 4-bet pot",
+    player: "Tommy Ace Jensen",
+    stakes: "€2/€5 Cash",
+    length: "03:58",
+  },
+  {
+    id: 4,
+    title: "Creative check-raise with air",
+    player: "Lena Stone",
+    stakes: "$530 Online",
+    length: "02:47",
+  },
+];
+
+export default function ClipsPage() {
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <main className="max-w-6xl mx-auto px-4 py-10 space-y-10">
+        <header className="space-y-3">
+          <p className="inline-flex items-center text-xs uppercase tracking-[0.25em] text-emerald-400/80 bg-emerald-400/10 px-3 py-1 rounded-full">
+            CLIPS CENTER
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold">
+            Upload your most{" "}
+            <span className="text-emerald-400">epic poker moments</span>.
+          </h1>
+          <p className="text-sm md:text-base text-slate-300 max-w-2xl">
+            Share sick bluffs, hero calls and highlight reels with the
+            ProPokerTV community. Admins will review every clip before
+            it goes live on the platform.
+          </p>
+        </header>
+
+        <section className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-start">
+          {/* Upload column */}
+          <div className="space-y-4">
+            <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 shadow-lg shadow-emerald-900/20">
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-lg font-semibold">
+                    Upload a new clip
+                  </h2>
+                  <p className="text-xs text-slate-400">
+                    MP4 / WebM, up to a few minutes. Keep it clean, exciting
+                    and poker-related.
+                  </p>
+                </div>
+                <div className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 text-xs">
+                  LIVE
+                </div>
+              </div>
+
+              {/* Existing upload form component */}
+              <UploadForm />
+
+              <p className="mt-4 text-[11px] leading-relaxed text-slate-400">
+                By uploading, you confirm that you own the rights to this
+                content and that it follows the ProPokerTV community
+                guidelines. Admins may edit titles, thumbnails and tags
+                for clarity and discoverability.
+              </p>
+            </div>
+          </div>
+
+          {/* Placeholder preview column */}
+          <aside className="space-y-4">
+            <div className="flex items-center justify-between gap-2">
+              <h3 className="text-sm font-semibold text-slate-100">
+                Recent featured clips (preview)
+              </h3>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-slate-500">
+                MOCK DATA
+              </span>
+            </div>
+
+            <div className="space-y-3">
+              {placeholderClips.map((clip) => (
+                <div
+                  key={clip.id}
+                  className="group flex gap-3 rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 hover:border-emerald-500/60 hover:bg-slate-900 transition-colors"
+                >
+                  <div className="relative h-16 w-28 flex-shrink-0 overflow-hidden rounded-lg bg-slate-800">
+                    <div className="absolute inset-0 flex items-center justify-center text-[11px] text-slate-300/80">
+                      Clip {clip.id}
+                    </div>
+                    <div className="absolute bottom-1 right-1 rounded bg-black/70 px-1.5 py-[2px] text-[10px] text-slate-100">
+                      {clip.length}
+                    </div>
+                  </div>
+                  <div className="flex min-w-0 flex-col justify-center gap-1">
+                    <p className="truncate text-xs font-medium text-slate-50 group-hover:text-emerald-300">
+                      {clip.title}
+                    </p>
+                    <p className="text-[11px] text-slate-400">
+                      {clip.player} • {clip.stakes}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-[11px] text-slate-500 leading-relaxed">
+              In the final product this panel will show{" "}
+              <span className="text-slate-300">
+                real community clips from the database
+              </span>
+              , including views, likes, tags and links to{" "}
+              <span className="text-slate-300">Play of the Week</span>{" "}
+              nominations.
+            </p>
+          </aside>
+        </section>
+      </main>
+    </div>
+  );
+}

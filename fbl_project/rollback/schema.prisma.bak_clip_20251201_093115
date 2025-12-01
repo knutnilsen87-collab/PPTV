@@ -15,7 +15,6 @@ enum Role {
 }
 
 model User {
-  clips       Clip[]
   id              String    @id @default(cuid())
   name            String?
   email           String?   @unique
@@ -137,4 +136,3 @@ model Clip {
 
   user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-

@@ -1,0 +1,10 @@
+2025-11-30T14:06:17.5986975+01:00	[INFO]	Starting Full Local Video Upload Phase 1
+2025-11-30T14:06:17.6328996+01:00	[INFO]	Directory exists: G:\PPTVGITHBNUB\ProPokerTV_merged\uploads
+2025-11-30T14:06:17.6336122+01:00	[INFO]	Directory exists: G:\PPTVGITHBNUB\ProPokerTV_merged\uploads\videos
+2025-11-30T14:06:17.6341799+01:00	[INFO]	Directory exists: G:\PPTVGITHBNUB\ProPokerTV_merged\uploads\thumbnails
+2025-11-30T14:06:17.6700173+01:00	[INFO]	Created directory: G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\upload
+2025-11-30T14:06:17.7730053+01:00	[INFO]	Wrote new upload API route
+2025-11-30T14:06:17.8329957+01:00	[INFO]	Wrote placeholder thumbnail to public folder
+2025-11-30T14:06:17.9023973+01:00	[INFO]	Using existing RSA keypair
+2025-11-30T14:06:17.9640451+01:00	[INFO]	Full Local Video Upload Phase 1 finished
+2025-11-30T14:06:17.9710211+01:00	[INFO]	Log signed successfully

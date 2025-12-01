@@ -1,0 +1,6 @@
+2025-11-30T23:53:54.2193354+01:00	[INFO]	Starting Clips upload UI fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-30T23:53:54.2656187+01:00	[INFO]	Using existing RSA keypair
+2025-11-30T23:53:54.3327672+01:00	[INFO]	Backed up existing clips page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\clips\page.tsx.bak_20251130_235354
+2025-11-30T23:53:54.5647297+01:00	[INFO]	Overwrote clips page with explicit UploadForm + placeholder list at G:\PPTVGITHBNUB\ProPokerTV_merged\app\clips\page.tsx
+2025-11-30T23:53:54.5697882+01:00	[INFO]	Clips upload UI fix completed
+2025-11-30T23:53:54.5767311+01:00	[INFO]	Log signed successfully

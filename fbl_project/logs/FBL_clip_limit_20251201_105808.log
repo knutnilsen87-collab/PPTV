@@ -1,0 +1,10 @@
+2025-12-01T10:58:09.3906001+01:00	[INFO]	Using existing RSA keypair
+2025-12-01T10:58:10.0333078+01:00	[INFO]	Starting clip upload limit + route fix in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-12-01T10:58:10.5802351+01:00	[INFO]	Backed up next.config.js to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\next.config.js.bak_clip_20251201_105808
+2025-12-01T10:58:10.5822985+01:00	[INFO]	Injecting experimental.serverActions.bodySizeLimit = '200mb'
+2025-12-01T10:58:10.6659626+01:00	[INFO]	Backed up ClipUploadForm.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\ClipUploadForm.tsx.bak_20251201_105808
+2025-12-01T10:58:10.6675888+01:00	[INFO]	Replaced upload URL /api/upload-clip -> /api/upload/clip in ClipUploadForm
+2025-12-01T10:58:10.7236128+01:00	[INFO]	Backed up upload route to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\route_clip_upload.ts.bak_20251201_105808
+2025-12-01T10:58:10.7242387+01:00	[INFO]	Appending export const config with sizeLimit 200mb to route.ts
+2025-12-01T10:58:10.7313113+01:00	[INFO]	Clip upload limit + route fix finished
+2025-12-01T10:58:10.7382581+01:00	[INFO]	Log signed successfully

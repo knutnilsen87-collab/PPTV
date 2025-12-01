@@ -1,233 +1,147 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
+import AdminUploadsClient from "./AdminUploadsClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  const [userCount, videoCount, voteCount, latestUsers, latestVideos, latestVotes] =
-    await Promise.all([
-      db.user.count().catch(() => 0),
-      db.video.count().catch(() => 0),
-      db.vote.count().catch(() => 0),
-      db.user
-        .findMany({
-          orderBy: { createdAt: "desc" },
-          take: 5,
-          select: {
-            id: true,
-            name: true,
-            email: true,
-            role: true,
-            createdAt: true,
-          },
-        })
-        .catch(() => []),
-      db.video
-        .findMany({
-          orderBy: { createdAt: "desc" },
-          take: 5,
-          select: {
-            id: true,
-            title: true,
-            createdAt: true,
-            vendor: true,
-          },
-        })
-        .catch(() => []),
-      db.vote
-        .findMany({
-          orderBy: { createdAt: "desc" },
-          take: 10,
-          select: {
-            id: true,
-            createdAt: true,
-            video: {
-              select: {
-                id: true,
-                title: true,
-              },
-            },
-            user: {
-              select: {
-                id: true,
-                email: true,
-                name: true,
-              },
-            },
-          },
-        })
-        .catch(() => []),
-    ]);
+  const session = await getServerSession(authOptions as any);
+  const role = (session as any)?.user?.role as string | undefined;
 
-  const fmt = (n: number) => new Intl.NumberFormat("en-US").format(n);
-  const fmtDateTime = (d: Date | string | null | undefined) =>
-    d
-      ? new Intl.DateTimeFormat("en-GB", {
-          dateStyle: "medium",
-          timeStyle: "short",
-        }).format(new Date(d))
-      : "Unknown";
+  if (!session || role !== "ADMIN") {
+    redirect("/login?callbackUrl=/admin");
+  }
+
+  const [userCount, videoCount, voteCount, latestUsers] = await Promise.all([
+    db.user.count(),
+    db.video.count(),
+    db.vote.count(),
+    db.user.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 5,
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        createdAt: true,
+      },
+    }),
+  ]);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50">
-      <div className="max-w-6xl mx-auto px-6 pt-16 pb-20 space-y-10">
-        <header className="space-y-2">
-          <p className="text-[0.65rem] tracking-[0.3em] uppercase text-amber-300">
-            Admin
-          </p>
-          <h1 className="text-2xl md:text-3xl font-semibold">
-            ProPokerTV control room
-          </h1>
-          <p className="text-sm text-slate-400 max-w-xl">
-            High-level overview of users, content and engagement. All data is
-            currently from your local development database.
-          </p>
-        </header>
-
-        {/* KPI cards */}
-        <section className="grid md:grid-cols-3 gap-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-2">
-            <p className="text-xs text-slate-400">Total users</p>
-            <p className="text-2xl font-semibold">{fmt(userCount)}</p>
-            <p className="text-[0.7rem] text-slate-500">
-              Includes admins, creators and regular viewers.
+      <div className="max-w-6xl mx-auto px-6 py-10">
+        <header className="flex items-center justify-between mb-10">
+          <div>
+            <h1 className="text-3xl font-bold">ProPokerTV Admin</h1>
+            <p className="text-sm text-slate-400 mt-1">
+              Internal control center for videos, creators and the community.
             </p>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-2">
-            <p className="text-xs text-slate-400">Videos in catalog</p>
-            <p className="text-2xl font-semibold">{fmt(videoCount)}</p>
-            <p className="text-[0.7rem] text-slate-500">
-              Streams, replays, highlights and clips.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-2">
-            <p className="text-xs text-slate-400">Total votes</p>
-            <p className="text-2xl font-semibold">{fmt(voteCount)}</p>
-            <p className="text-[0.7rem] text-slate-500">
-              Votes cast across Play of the Week and other polls.
-            </p>
-          </div>
-        </section>
-
-        {/* Latest users & latest videos */}
-        <section className="grid md:grid-cols-2 gap-6">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold">Latest users</h2>
-              <span className="text-[0.7rem] text-slate-500">
-                Showing {latestUsers.length} most recent
-              </span>
-            </div>
-            <div className="divide-y divide-slate-800 text-sm">
-              {latestUsers.length === 0 && (
-                <p className="text-xs text-slate-500 py-2">
-                  No users found yet. The seeded admin user will appear here
-                  once the database has been populated.
-                </p>
-              )}
-              {latestUsers.map((user) => (
-                <div
-                  key={user.id}
-                  className="py-2 flex items-center justify-between gap-4"
-                >
-                  <div className="space-y-0.5">
-                    <p className="font-medium text-xs">
-                      {user.name ?? user.email ?? "Unknown user"}
-                    </p>
-                    <p className="text-[0.7rem] text-slate-400">
-                      {user.email ?? "No email"} •{" "}
-                      <span className="uppercase text-[0.7rem] tracking-[0.12em] text-amber-300">
-                        {user.role ?? "USER"}
-                      </span>
-                    </p>
-                  </div>
-                  <p className="text-[0.65rem] text-slate-500">
-                    {fmtDateTime(user.createdAt)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-sm font-semibold">Latest videos</h2>
-              <span className="text-[0.7rem] text-slate-500">
-                Showing {latestVideos.length} most recent
-              </span>
-            </div>
-            <div className="divide-y divide-slate-800 text-sm">
-              {latestVideos.length === 0 && (
-                <p className="text-xs text-slate-500 py-2">
-                  No videos found yet. Once uploads or seeds run, they will show
-                  up here.
-                </p>
-              )}
-              {latestVideos.map((video) => (
-                <div
-                  key={video.id}
-                  className="py-2 flex items-center justify-between gap-4"
-                >
-                  <div className="space-y-0.5">
-                    <p className="font-medium text-xs line-clamp-1">
-                      {video.title}
-                    </p>
-                    <p className="text-[0.7rem] text-slate-400">
-                      Vendor: {video.vendor ?? "Unknown"}
-                    </p>
-                  </div>
-                  <p className="text-[0.65rem] text-slate-500">
-                    {fmtDateTime(video.createdAt)}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Recent votes */}
-        <section className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-3">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold">Recent votes</h2>
-            <span className="text-[0.7rem] text-slate-500">
-              Last {latestVotes.length} events
+          <div className="text-right text-xs text-slate-400">
+            Signed in as{" "}
+            <span className="font-semibold text-slate-100">
+              {(session?.user as any)?.email ?? "unknown"}
+            </span>
+            <br />
+            Role:{" "}
+            <span className="font-semibold text-emerald-300">
+              {role ?? "unknown"}
             </span>
           </div>
-          <div className="divide-y divide-slate-800 text-sm">
-            {latestVotes.length === 0 && (
-              <p className="text-xs text-slate-500 py-2">
-                No votes have been recorded yet. Try casting a vote on
-                Play of the Week to see events appear here.
-              </p>
-            )}
-            {latestVotes.map((vote) => (
-              <div
-                key={vote.id}
-                className="py-2 flex items-center justify-between gap-4"
-              >
-                <div className="space-y-0.5">
-                  <p className="font-medium text-xs line-clamp-1">
-                    {vote.video?.title ?? "Unknown video"}
-                  </p>
-                  <p className="text-[0.7rem] text-slate-400">
-                    {vote.user?.email ?? vote.user?.name ?? "Unknown user"}
-                  </p>
-                </div>
-                <p className="text-[0.65rem] text-slate-500">
-                  {fmtDateTime(vote.createdAt)}
-                </p>
-              </div>
-            ))}
+        </header>
+
+        {/* Stats cards */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <div className="text-xs uppercase tracking-wide text-slate-400">
+              Total users
+            </div>
+            <div className="mt-2 text-3xl font-semibold">{userCount}</div>
+            <p className="mt-1 text-xs text-slate-500">
+              Registered accounts in the ProPokerTV universe.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <div className="text-xs uppercase tracking-wide text-slate-400">
+              Total videos
+            </div>
+            <div className="mt-2 text-3xl font-semibold">{videoCount}</div>
+            <p className="mt-1 text-xs text-slate-500">
+              Clips, streams and highlights currently in the system.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+            <div className="text-xs uppercase tracking-wide text-slate-400">
+              Total votes
+            </div>
+            <div className="mt-2 text-3xl font-semibold">{voteCount}</div>
+            <p className="mt-1 text-xs text-slate-500">
+              Community engagement across Play of the Week and clips.
+            </p>
           </div>
         </section>
 
-        {/* Footer note */}
-        <section className="text-[0.7rem] text-slate-500 border-t border-slate-800 pt-4">
-          <p>
-            Product note: this dashboard is a first iteration. Next steps could
-            include moderation queues, creator management, payouts, and live
-            stream health.
-          </p>
-        </section>
+        {/* Latest users + Upload management */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Latest users */}
+          <section className="lg:col-span-1">
+            <h2 className="text-xl font-semibold mb-3">Latest users</h2>
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
+              {latestUsers.length === 0 && (
+                <p className="text-sm text-slate-400">
+                  No users found yet.
+                </p>
+              )}
+              {latestUsers.length > 0 && (
+                <ul className="space-y-3 text-sm">
+                  {latestUsers.map((u) => {
+                    const createdLabel = new Date(
+                      u.createdAt as unknown as string
+                    ).toLocaleString(undefined, {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                    });
+
+                    return (
+                      <li
+                        key={u.id}
+                        className="flex items-start justify-between border-b border-slate-800/60 last:border-none pb-2"
+                      >
+                        <div>
+                          <div className="font-medium">
+                            {u.name ?? "(no name)"}
+                          </div>
+                          <div className="text-xs text-slate-400">
+                            {u.email}
+                          </div>
+                        </div>
+                        <div className="text-right text-xs text-slate-400">
+                          <div className="mb-1">
+                            <span className="inline-flex items-center rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-slate-300 border border-slate-700">
+                              {u.role ?? "USER"}
+                            </span>
+                          </div>
+                          <div>{createdLabel}</div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          </section>
+
+          {/* Upload management (client component) */}
+          <div className="lg:col-span-2">
+            <AdminUploadsClient />
+          </div>
+        </div>
       </div>
     </div>
   );

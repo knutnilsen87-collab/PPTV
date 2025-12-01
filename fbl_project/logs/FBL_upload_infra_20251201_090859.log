@@ -1,0 +1,18 @@
+2025-12-01T09:08:59.2241774+01:00	[INFO]	Starting upload infrastructure setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-12-01T09:08:59.2626361+01:00	[INFO]	Using existing RSA keypair
+2025-12-01T09:08:59.3282182+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\public\uploads
+2025-12-01T09:08:59.3293176+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\public\uploads\videos
+2025-12-01T09:08:59.3302521+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\public\uploads\thumbs
+2025-12-01T09:08:59.4970856+01:00	[INFO]	Backed up schema.prisma to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\schema.prisma.bak_clip_20251201_090859
+2025-12-01T09:08:59.5600528+01:00	[INFO]	Appending ClipStatus enum + Clip model to schema.prisma
+2025-12-01T09:08:59.5634012+01:00	[INFO]	ClipStatus enum + Clip model written to schema.prisma
+2025-12-01T09:08:59.5822108+01:00	[INFO]	Running pnpm prisma migrate dev --name add_clip_model
+2025-12-01T09:09:06.9111257+01:00	[ERROR]	prisma migrate dev failed with code 1
+2025-12-01T09:09:06.9229015+01:00	[INFO]	Running pnpm prisma generate
+2025-12-01T09:09:08.0642175+01:00	[ERROR]	prisma generate failed with code 1
+2025-12-01T09:09:08.1671115+01:00	[INFO]	Wrote upload API route to G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\upload\route.ts
+2025-12-01T09:09:08.4390281+01:00	[INFO]	Wrote ClipUploadForm component to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\ClipUploadForm.tsx
+2025-12-01T09:09:08.4735744+01:00	[INFO]	Backed up app/account/page.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_upload_20251201_090859
+2025-12-01T09:09:08.8446268+01:00	[INFO]	Overwrote app/account/page.tsx with upload-aware version
+2025-12-01T09:09:08.8566242+01:00	[INFO]	Upload infrastructure script finished
+2025-12-01T09:09:08.8642103+01:00	[INFO]	Log signed successfully

@@ -1,0 +1,135 @@
+"use client";
+
+import { useState, FormEvent } from "react";
+
+interface ClipUploadFormProps {
+  userId: string;
+}
+
+export function ClipUploadForm({ userId }: ClipUploadFormProps) {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setMessage(null);
+    setError(null);
+
+    if (!file) {
+      setError("Please select a video file to upload.");
+      return;
+    }
+
+    try {
+      setIsUploading(true);
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("title", title || "Untitled clip");
+      formData.append("description", description || "");
+      formData.append("userId", userId);
+
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data?.error || "Upload failed.");
+        return;
+      }
+
+      setMessage("Clip uploaded successfully! It will appear below.");
+      setTitle("");
+      setDescription("");
+      setFile(null);
+    } catch (err) {
+      console.error(err);
+      setError("Unexpected error during upload.");
+    } finally {
+      setIsUploading(false);
+    }
+  }
+
+  return (
+    <div className="w-full rounded-2xl border border-slate-800 bg-slate-950/60 p-6 shadow-lg shadow-black/40 backdrop-blur">
+      <h2 className="mb-2 text-lg font-semibold text-slate-50">
+        Upload a new clip
+      </h2>
+      <p className="mb-4 text-sm text-slate-400">
+        Share your best hands, sick bluffs or crazy hero calls. Files are stored
+        on the server and can be reviewed before going fully live.
+      </p>
+
+      <form className="space-y-4" onSubmit={handleSubmit}>
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-slate-200">
+            Title
+          </label>
+          <input
+            type="text"
+            className="w-full rounded-xl border border-slate-800 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 outline-none ring-0 focus:border-accent-poker focus:ring-1 focus:ring-accent-poker"
+            placeholder="Example: Sick hero call on the river vs regular"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-slate-200">
+            Description
+          </label>
+          <textarea
+            className="min-h-[80px] w-full rounded-xl border border-slate-800 bg-slate-900/70 px-3 py-2 text-sm text-slate-50 outline-none focus:border-accent-poker focus:ring-1 focus:ring-accent-poker"
+            placeholder="Short context: stakes, opponents, interesting decisions, etc."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-slate-200">
+            Video file
+          </label>
+          <input
+            type="file"
+            accept="video/*"
+            onChange={(e) => {
+              const f = e.target.files?.[0] ?? null;
+              setFile(f);
+            }}
+            className="block w-full text-sm text-slate-200 file:mr-3 file:rounded-md file:border-0 file:bg-accent-poker/80 file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-black hover:file:bg-accent-poker"
+          />
+          <p className="text-xs text-slate-500">
+            Recommended: MP4 / H.264, keep file sizes reasonable while testing.
+          </p>
+        </div>
+
+        <button
+          type="submit"
+          disabled={isUploading}
+          className="inline-flex items-center rounded-xl bg-accent-poker px-4 py-2 text-sm font-semibold text-black shadow-md shadow-accent-poker/30 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isUploading ? "Uploading..." : "Upload clip"}
+        </button>
+      </form>
+
+      {message && (
+        <p className="mt-3 text-sm text-emerald-400">
+          {message}
+        </p>
+      )}
+      {error && (
+        <p className="mt-3 text-sm text-red-400">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}

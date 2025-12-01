@@ -1,0 +1,6 @@
+2025-12-01T11:19:29.8069953+01:00	INFO	Starting no-DB clip upload patch in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-12-01T11:19:29.8583301+01:00	INFO	Backed up upload route to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\upload_clip_route.ts.bak_20251201_111929
+2025-12-01T11:19:29.9596600+01:00	INFO	Rewrote app/api/upload/clip/route.ts to no-DB version
+2025-12-01T11:19:30.0177368+01:00	INFO	Backed up account page to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\account_page.tsx.bak_cliplist_20251201_111929
+2025-12-01T11:19:30.0197404+01:00	INFO	No db.clip.findMany call found in /account – nothing to patch
+2025-12-01T11:19:30.0292414+01:00	INFO	No-DB clip upload patch finished

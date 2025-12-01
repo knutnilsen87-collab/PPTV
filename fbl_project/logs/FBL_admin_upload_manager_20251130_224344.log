@@ -1,0 +1,9 @@
+2025-11-30T22:43:44.6443034+01:00	[INFO]	Starting Admin Upload Manager (DEL 3) in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-30T22:43:44.7025270+01:00	[INFO]	Using existing RSA keypair
+2025-11-30T22:43:44.7642293+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\admin\videos
+2025-11-30T22:43:44.8353209+01:00	[INFO]	Wrote API route for /api/admin/videos
+2025-11-30T22:43:45.0504803+01:00	[INFO]	Wrote app/admin/AdminUploadsClient.tsx
+2025-11-30T22:43:45.0787767+01:00	[INFO]	Backed up existing app/admin/page.tsx
+2025-11-30T22:43:45.2415028+01:00	[INFO]	Wrote new app/admin/page.tsx with dashboard + upload manager
+2025-11-30T22:43:45.2588133+01:00	[INFO]	Admin Upload Manager DEL 3 completed
+2025-11-30T22:43:45.2654069+01:00	[INFO]	Log signed successfully

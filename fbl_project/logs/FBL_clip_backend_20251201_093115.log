@@ -1,0 +1,15 @@
+2025-12-01T09:31:15.2323798+01:00	[INFO]	Starting clip backend setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-12-01T09:31:15.2972612+01:00	[INFO]	Using existing RSA keypair
+2025-12-01T09:31:15.3657789+01:00	[INFO]	Loading schema.prisma from G:\PPTVGITHBNUB\ProPokerTV_merged\prisma\schema.prisma
+2025-12-01T09:31:15.4442533+01:00	[INFO]	Adding clips relation to User model
+2025-12-01T09:31:15.4685738+01:00	[INFO]	Backed up schema.prisma to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\schema.prisma.bak_clip_20251201_093115
+2025-12-01T09:31:15.4801138+01:00	[INFO]	schema.prisma updated on disk
+2025-12-01T09:31:15.4991452+01:00	[INFO]	Running pnpm prisma migrate dev --name add_clip_model
+2025-12-01T09:31:16.5689165+01:00	[ERROR]	prisma migrate dev failed with code 1
+2025-12-01T09:31:16.5799309+01:00	[INFO]	Running pnpm prisma generate
+2025-12-01T09:31:17.6337484+01:00	[ERROR]	prisma generate failed with code 1
+2025-12-01T09:31:17.6660018+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\public\uploads\clips
+2025-12-01T09:31:17.6922600+01:00	[INFO]	Created directory G:\PPTVGITHBNUB\ProPokerTV_merged\app\api\upload\clip
+2025-12-01T09:31:17.8182690+01:00	[INFO]	Wrote app/api/upload/clip/route.ts
+2025-12-01T09:31:17.8302791+01:00	[INFO]	Clip backend setup finished
+2025-12-01T09:31:17.8369130+01:00	[INFO]	Log signed successfully

@@ -1,0 +1,8 @@
+2025-11-30T23:57:02.0777632+01:00	[INFO]	Starting move of clip upload into /account in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-11-30T23:57:02.1711876+01:00	[INFO]	Using existing RSA keypair
+2025-11-30T23:57:02.3046311+01:00	[INFO]	Backed up existing account page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_uploadmove_20251130_235701
+2025-11-30T23:57:02.3396503+01:00	[INFO]	Backed up existing clips page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\clips\page.tsx.bak_uploadmove_20251130_235701
+2025-11-30T23:57:02.6162263+01:00	[INFO]	Overwrote /account page with profile + My clips upload section
+2025-11-30T23:57:02.8043747+01:00	[INFO]	Overwrote /clips page to be public gallery with CTA to /account for upload
+2025-11-30T23:57:02.8116756+01:00	[INFO]	Move clip upload into /account completed
+2025-11-30T23:57:02.8187462+01:00	[INFO]	Log signed successfully

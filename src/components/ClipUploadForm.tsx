@@ -1,0 +1,116 @@
+"use client";
+
+import React, { useState } from "react";
+
+type Props = {
+  userId: string;
+};
+
+export const ClipUploadForm: React.FC<Props> = ({ userId }) => {
+  const [title, setTitle] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [status, setStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
+  const [message, setMessage] = useState<string>("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!file) {
+      setMessage("Please select a video file to upload.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("uploading");
+    setMessage("");
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("title", title || file.name);
+    formData.append("userId", userId);
+
+    try {
+      const res = await fetch("/api/upload/clip", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || "Upload failed");
+      }
+
+      setStatus("done");
+      setMessage("Upload received. Processing will be added in a later phase.");
+      setTitle("");
+      setFile(null);
+    } catch (err: any) {
+      console.error(err);
+      setStatus("error");
+      setMessage(err.message || "Something went wrong while uploading.");
+    }
+  }
+
+  return (
+    <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/70 p-6">
+      <h2 className="text-lg font-semibold text-slate-50">Upload a new clip</h2>
+      <p className="mt-1 text-sm text-slate-400">
+        Short vertical or horizontal highlights. For now this is a placeholder uploader – files are accepted,
+        but transcoding and public playback will arrive in a later phase.
+      </p>
+
+      <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-slate-200" htmlFor="clip-title">
+            Title
+          </label>
+          <input
+            id="clip-title"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Give your clip a short title"
+            className="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2 text-sm text-slate-50 outline-none focus:border-accent-poker focus:ring-1 focus:ring-accent-poker/60"
+          />
+        </div>
+
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-slate-200" htmlFor="clip-file">
+            Video file
+          </label>
+          <input
+            id="clip-file"
+            type="file"
+            accept="video/*"
+            onChange={(e) => setFile(e.target.files?.[0] ?? null)}
+            className="block w-full text-sm text-slate-200 file:mr-4 file:rounded-full file:border-0 file:bg-accent-poker file:px-4 file:py-2 file:text-sm file:font-semibold file:text-slate-900 hover:file:bg-accent-poker/90"
+          />
+          <p className="text-xs text-slate-500">
+            Max size 500 MB. Supported formats: MP4, MOV, WEBM. (Limits can be adjusted later.)
+          </p>
+        </div>
+
+        {message && (
+          <div
+            className={
+              "rounded-xl border px-3 py-2 text-sm " +
+              (status === "error"
+                ? "border-red-500/60 bg-red-950/40 text-red-100"
+                : "border-emerald-500/50 bg-emerald-950/40 text-emerald-100")
+            }
+          >
+            {message}
+          </div>
+        )}
+
+        <button
+          type="submit"
+          disabled={status === "uploading"}
+          className="inline-flex items-center rounded-full bg-accent-poker px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_0_24px_rgba(250,204,21,0.55)] disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          {status === "uploading" ? "Uploading…" : "Upload clip"}
+        </button>
+      </form>
+    </div>
+  );
+};
+

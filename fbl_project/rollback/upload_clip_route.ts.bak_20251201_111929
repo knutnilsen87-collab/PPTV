@@ -1,0 +1,91 @@
+import { NextRequest, NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+import path from "path";
+import { promises as fs } from "fs";
+
+import { authOptions } from "@/lib/auth";
+import { db, Prisma } from "@/lib/db";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+export async function POST(req: NextRequest) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session || !session.user || !session.user.id) {
+      return NextResponse.json(
+        { error: "You must be logged in to upload clips." },
+        { status: 401 }
+      );
+    }
+
+    const formData = await req.formData();
+
+    const file = formData.get("file");
+    const title = (formData.get("title") as string | null) ?? "Untitled clip";
+    const description = (formData.get("description") as string | null) ?? "";
+
+    if (!file || typeof file === "string") {
+      return NextResponse.json(
+        { error: "Missing file in upload." },
+        { status: 400 }
+      );
+    }
+
+    // In Next.js Route Handlers, `file` is a Blob/File-like object
+    const blob = file as File;
+    const arrayBuffer = await blob.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    const uploadsRoot = path.join(process.cwd(), "public", "uploads");
+    const clipsDir = path.join(uploadsRoot, "clips");
+
+    await fs.mkdir(clipsDir, { recursive: true });
+
+    const originalName = blob.name || "clip.mp4";
+    const safeName = originalName.replace(/[^a-zA-Z0-9_\.\-]/g, "_");
+    const timestamp = Date.now();
+    const fileName = `${timestamp}_${safeName}`;
+    const filePath = path.join(clipsDir, fileName);
+
+    await fs.writeFile(filePath, buffer);
+
+    const publicVideoPath = `/uploads/clips/${fileName}`;
+
+    // Create Clip entry in the database
+    const clip = await db.clip.create({
+      data: {
+        title,
+        description,
+        status: "READY" as Prisma.ClipStatus,
+        videoPath: publicVideoPath,
+        thumbPath: null,
+        userId: session.user.id as string,
+      },
+    });
+
+    return NextResponse.json(
+      {
+        ok: true,
+        clipId: clip.id,
+        videoPath: clip.videoPath,
+        message: "Clip uploaded successfully.",
+      },
+      { status: 201 }
+    );
+  } catch (err) {
+    console.error("[upload clip] error", err);
+    return NextResponse.json(
+      { error: "Failed to upload clip." },
+      { status: 500 }
+    );
+  }
+}
+
+export const config = {
+  api: {
+    bodyParser: false,
+    sizeLimit: "200mb",
+  },
+};

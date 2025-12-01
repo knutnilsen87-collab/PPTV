@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { authOptions } from "@/lib/auth";
-import { ClipUploadForm } from "../../src/components/ClipUploadForm";
+import { ClipUploadForm } from "@/components/ClipUploadForm";
 
 export const dynamic = "force-dynamic";
 
@@ -21,12 +21,10 @@ export default async function AccountPage() {
     redirect("/login?callbackUrl=/account");
   }
 
-  const clips: {
-  id: string;
-  title: string;
-  createdAt: Date;
-  status: "processing" | "ready" | "error";
-}[] = [];
+  const clips = await db.clip.findMany({
+    where: { userId: user.id },
+    orderBy: { createdAt: "desc" },
+  });
 
   const createdAt =
     user.createdAt instanceof Date
@@ -215,5 +213,3 @@ export default async function AccountPage() {
     </div>
   );
 }
-
-

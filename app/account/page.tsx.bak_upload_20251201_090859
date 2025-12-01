@@ -1,0 +1,127 @@
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
+import UploadForm from "../../components/UploadForm";
+
+export const dynamic = "force-dynamic";
+
+export default async function AccountPage() {
+  const session = await getServerSession(authOptions);
+
+  if (!session?.user) {
+    redirect("/login?callbackUrl=/account");
+  }
+
+  const user = session.user as {
+    name?: string | null;
+    email?: string | null;
+    role?: string | null;
+  };
+
+  const displayName = user.name ?? "Poker player";
+  const email = user.email ?? "Unknown email";
+  const role = (user.role ?? "USER").toUpperCase();
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <main className="max-w-5xl mx-auto px-4 py-10 space-y-8">
+        <header className="space-y-3">
+          <p className="inline-flex items-center text-xs uppercase tracking-[0.25em] text-emerald-400/80 bg-emerald-400/10 px-3 py-1 rounded-full">
+            ACCOUNT
+          </p>
+          <h1 className="text-3xl md:text-4xl font-semibold">
+            Welcome back,{" "}
+            <span className="text-emerald-400">{displayName}</span>.
+          </h1>
+          <p className="text-sm md:text-base text-slate-300 max-w-2xl">
+            This is your personal hub on ProPokerTV. Update your profile,
+            manage your content and upload new poker clips for the community.
+          </p>
+        </header>
+
+        {/* Top: basic profile summary */}
+        <section className="grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-lg shadow-slate-900/40">
+              <h2 className="text-lg font-semibold mb-2">Profile overview</h2>
+              <p className="text-xs text-slate-400 mb-4">
+                Full profile editing (avatar, bio, poker preferences) will be
+                expanded in the next iteration. For now this is a simple
+                snapshot of your account.
+              </p>
+
+              <dl className="space-y-3 text-sm">
+                <div className="flex justify-between gap-4">
+                  <dt className="text-slate-400">Name</dt>
+                  <dd className="font-medium text-slate-50">{displayName}</dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-slate-400">Email</dt>
+                  <dd className="font-mono text-xs md:text-sm text-slate-100">
+                    {email}
+                  </dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-slate-400">Role</dt>
+                  <dd className="text-xs font-semibold px-2 py-1 rounded-full bg-slate-800/80 text-emerald-300">
+                    {role}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-lg shadow-slate-900/40 space-y-3">
+            <h2 className="text-lg font-semibold">Account status</h2>
+            <p className="text-xs text-slate-400">
+              Later this card will show detailed info like subscription level,
+              creator verification, connected wallets and more.
+            </p>
+            <ul className="mt-3 space-y-1 text-xs text-slate-300">
+              <li>• Account is active</li>
+              <li>• Uploads are enabled</li>
+              <li>• Admins review all content before featuring it</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* My clips upload area */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <h2 className="text-xl font-semibold">My clips</h2>
+              <p className="text-xs text-slate-400">
+                Upload your own hands, highlight reels and fun moments. This
+                panel is only available to signed-in users.
+              </p>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-[11px] text-slate-400">
+              <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              Uploads linked to your profile
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-emerald-500/40 bg-slate-900/80 p-6 shadow-lg shadow-emerald-900/30">
+            <UploadForm />
+            <p className="mt-4 text-[11px] leading-relaxed text-slate-400">
+              Once full storage integration is enabled, your clips will appear
+              under your public creator profile and may be selected for
+              Play of the Week, special shows and featured segments.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-4 text-[11px] text-slate-400">
+            <p className="mb-1 font-semibold text-slate-200">
+              Coming next for this area:
+            </p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Edit display name, avatar and bio directly.</li>
+              <li>See a list of your uploaded clips with status (processing, live, rejected).</li>
+              <li>Stats like total views, likes and Play of the Week nominations.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}

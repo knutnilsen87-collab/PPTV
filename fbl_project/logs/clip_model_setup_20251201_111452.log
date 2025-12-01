@@ -1,0 +1,8 @@
+2025-12-01T11:14:52.2944786+01:00	INFO	Starting Clip model setup in G:\PPTVGITHBNUB\ProPokerTV_merged
+2025-12-01T11:14:52.3323584+01:00	INFO	Backed up schema.prisma to G:\PPTVGITHBNUB\ProPokerTV_merged\fbl_project\rollback\schema.prisma.bak_clip_20251201_111452
+2025-12-01T11:14:52.3751131+01:00	INFO	Clip model already present in schema.prisma – hopper over modell-append.
+2025-12-01T11:14:52.3841565+01:00	INFO	Running: pnpm prisma migrate dev --name add_clip_model
+2025-12-01T11:14:53.5167933+01:00	INFO	prisma migrate dev completed successfully
+2025-12-01T11:14:53.5314043+01:00	INFO	Running: pnpm prisma generate
+2025-12-01T11:14:54.5617109+01:00	INFO	prisma generate completed successfully
+2025-12-01T11:14:54.5777964+01:00	INFO	Clip model setup finished. db.clip should now be available in PrismaClient.

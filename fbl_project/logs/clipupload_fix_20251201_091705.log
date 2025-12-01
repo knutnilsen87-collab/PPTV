@@ -1,0 +1,7 @@
+2025-12-01T09:17:05.0576999+01:00	[INFO]	Starting ClipUploadForm fix
+2025-12-01T09:17:05.0964533+01:00	[INFO]	components directory exists at G:\PPTVGITHBNUB\ProPokerTV_merged\src\components
+2025-12-01T09:17:05.1180622+01:00	[INFO]	Backed up existing ClipUploadForm.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\ClipUploadForm.tsx.bak_20251201_091705
+2025-12-01T09:17:05.3462433+01:00	[INFO]	Wrote ClipUploadForm.tsx to G:\PPTVGITHBNUB\ProPokerTV_merged\src\components\ClipUploadForm.tsx
+2025-12-01T09:17:05.4042327+01:00	[INFO]	Backed up account page to G:\PPTVGITHBNUB\ProPokerTV_merged\app\account\page.tsx.bak_clipfix_20251201_091705
+2025-12-01T09:17:05.5364116+01:00	[INFO]	Patched app/account/page.tsx to use relative ClipUploadForm import
+2025-12-01T09:17:05.5528416+01:00	[INFO]	ClipUploadForm fix completed
